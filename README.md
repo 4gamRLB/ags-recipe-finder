@@ -10,7 +10,7 @@
 
 The **Alpha-Gal Safe Recipe Finder** is an interactive web tool that helps people living with Alpha-Gal Syndrome (AGS) navigate food safety with confidence. It uses AI to check ingredients, adapt existing recipes, suggest safe substitutions, and answer any AGS-related food question.
 
-**Live tool:** [yourusername.github.io/ags-recipe-finder](https://yourusername.github.io/ags-recipe-finder)
+**Live tool:** [4gamRLB.github.io/ags-recipe-finder](https://4gamRLB.github.io/ags-recipe-finder)
 *(Replace with your real GitHub Pages URL after publishing)*
 
 ---
