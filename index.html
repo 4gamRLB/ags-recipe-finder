@@ -6,7 +6,7 @@
   <title>Alpha-Gal Safe Recipe Finder | Rachel Baldwin / RLBDesigns</title>
   <meta name="description" content="AI-powered tool to check ingredients, adapt recipes, and find mammal-free substitutions for Alpha-Gal Syndrome. A free bonus resource from Rachel Baldwin / RLBDesigns.com." />
   <meta property="og:title" content="Alpha-Gal Safe Recipe Finder | Rachel Baldwin / RLBDesigns" />
-  <meta property="og:description" content="Check ingredients, adapt recipes, and discover mammal-free substitutions — powered by AI. Free bonus for cookbook buyers." />
+  <meta property="og:description" content="Check ingredients, adapt recipes, and find mammal-free substitutions — free bonus for cookbook buyers." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -43,520 +43,188 @@
     }
 
     html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--text-main); min-height: 100vh; line-height: 1.6; }
 
-    body {
-      font-family: 'Source Sans 3', sans-serif;
-      background: var(--bg);
-      color: var(--text-main);
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-
-    /* ── BONUS BANNER ────────────────────────────────── */
-    .bonus-banner {
-      background: linear-gradient(90deg, var(--sage-dark) 0%, var(--sage-mid) 100%);
-      color: #fff;
-      text-align: center;
-      padding: 9px 2rem;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-    }
-    .bonus-banner a {
-      color: #c8e89a;
-      text-decoration: none;
-      font-weight: 600;
-    }
+    /* BONUS BANNER */
+    .bonus-banner { background: linear-gradient(90deg, var(--sage-dark) 0%, var(--sage-mid) 100%); color: #fff; text-align: center; padding: 9px 2rem; font-size: 13px; font-weight: 500; }
+    .bonus-banner a { color: #c8e89a; text-decoration: none; font-weight: 600; }
     .bonus-banner a:hover { text-decoration: underline; }
     .bonus-banner i { font-size: 14px; vertical-align: -2px; margin-right: 5px; }
 
-    /* ── HEADER ─────────────────────────────────────── */
-    .site-header {
-      background: #fff;
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .header-inner {
-      max-width: 860px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 58px;
-    }
-    .site-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-    .logo-icon {
-      width: 34px; height: 34px;
-      background: var(--sage-light);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-    }
+    /* HEADER */
+    .site-header { background: #fff; border-bottom: 1px solid var(--border); padding: 0 2rem; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 58px; }
+    .site-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon { width: 34px; height: 34px; background: var(--sage-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
     .logo-icon i { font-size: 18px; color: var(--sage-dark); }
-    .logo-text {
-      font-family: 'Lora', serif;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--sage-dark);
-      line-height: 1.15;
-    }
-    .logo-sub {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 10.5px;
-      font-weight: 400;
-      color: var(--text-faint);
-      letter-spacing: 0.04em;
-      display: block;
-    }
-    .header-link {
-      font-size: 13px;
-      color: var(--text-muted);
-      text-decoration: none;
-    }
+    .logo-text { font-family: 'Lora', serif; font-size: 15px; font-weight: 600; color: var(--sage-dark); line-height: 1.15; }
+    .logo-sub { font-family: 'Source Sans 3', sans-serif; font-size: 10.5px; font-weight: 400; color: var(--text-faint); letter-spacing: 0.04em; display: block; }
+    .header-link { font-size: 13px; color: var(--text-muted); text-decoration: none; }
     .header-link:hover { color: var(--sage-mid); }
 
-    /* ── HERO ────────────────────────────────────────── */
-    .hero {
-      background: linear-gradient(160deg, var(--sage-pale) 0%, #fff 60%);
-      border-bottom: 1px solid var(--border);
-      padding: 3.5rem 2rem 3rem;
-      text-align: center;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--herb-light);
-      border: 1px solid rgba(29,158,117,0.25);
-      border-radius: 99px;
-      padding: 5px 14px 5px 10px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--herb-dark);
-      margin-bottom: 1.25rem;
-      letter-spacing: 0.03em;
-    }
-    .hero-badge i { font-size: 14px; }
-    .hero h1 {
-      font-family: 'Lora', serif;
-      font-size: clamp(26px, 5vw, 38px);
-      font-weight: 600;
-      color: var(--sage-dark);
-      line-height: 1.2;
-      margin-bottom: 0.35rem;
-    }
-    .hero-byline {
-      font-size: 13px;
-      color: var(--text-faint);
-      margin-bottom: 0.65rem !important;
-      letter-spacing: 0.02em;
-    }
+    /* HERO */
+    .hero { background: linear-gradient(160deg, var(--sage-pale) 0%, #fff 60%); border-bottom: 1px solid var(--border); padding: 3rem 2rem 2.5rem; text-align: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 7px; background: var(--herb-light); border: 1px solid rgba(29,158,117,0.25); border-radius: 99px; padding: 5px 14px 5px 10px; font-size: 12px; font-weight: 600; color: var(--herb-dark); margin-bottom: 1rem; letter-spacing: 0.03em; }
+    .hero h1 { font-family: 'Lora', serif; font-size: clamp(24px, 5vw, 36px); font-weight: 600; color: var(--sage-dark); line-height: 1.2; margin-bottom: 0.3rem; }
+    .hero-byline { font-size: 13px; color: var(--text-faint); margin-bottom: 0.6rem; }
     .hero-byline strong { color: var(--sage-mid); font-weight: 600; }
-    .hero p {
-      font-size: 16px;
-      color: var(--text-muted);
-      max-width: 540px;
-      margin: 0 auto 1.5rem;
-      line-height: 1.7;
-    }
-    .api-key-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      max-width: 480px;
-      margin: 0 auto;
-      background: #fff;
-      border: 1px solid var(--border-mid);
-      border-radius: var(--radius-md);
-      padding: 6px 6px 6px 14px;
-    }
-    .api-key-row i { font-size: 16px; color: var(--text-faint); flex-shrink: 0; }
-    .api-key-row input {
-      flex: 1;
-      border: none;
-      outline: none;
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 14px;
-      color: var(--text-main);
-      background: transparent;
-      min-width: 0;
-    }
-    .api-key-row input::placeholder { color: var(--text-faint); }
-    .key-save-btn {
-      padding: 7px 14px;
-      background: var(--sage);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      white-space: nowrap;
-      font-family: 'Source Sans 3', sans-serif;
-      transition: background 0.15s;
-    }
-    .key-save-btn:hover { background: var(--sage-mid); }
-    .key-hint {
-      font-size: 11.5px;
-      color: var(--text-faint);
-      margin-top: 8px;
-      text-align: center;
-    }
-    .key-hint a { color: var(--herb); text-decoration: none; }
-    .key-hint a:hover { text-decoration: underline; }
-    .key-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 12px;
-      margin-top: 8px;
-      font-weight: 500;
-    }
-    .key-status.set { color: var(--sage-mid); }
-    .key-status.unset { color: var(--text-faint); }
+    .hero p { font-size: 15px; color: var(--text-muted); max-width: 560px; margin: 0 auto; line-height: 1.7; }
 
-    /* ── MAIN LAYOUT ─────────────────────────────────── */
-    .main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
-    }
+    /* MAIN */
+    .main { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
-    /* ── TABS ────────────────────────────────────────── */
-    .tabs-nav {
-      display: flex;
-      gap: 4px;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 5px;
-      margin-bottom: 1.5rem;
-    }
-    .tab-btn {
-      flex: 1;
-      padding: 9px 6px;
-      border: none;
-      background: transparent;
-      border-radius: var(--radius-md);
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-muted);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      transition: background 0.15s, color 0.15s;
-      white-space: nowrap;
-    }
+    /* TABS */
+    .tabs-nav { display: flex; gap: 4px; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 5px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .tab-btn { flex: 1; min-width: 80px; padding: 9px 6px; border: none; background: transparent; border-radius: var(--radius-md); font-family: 'Source Sans 3', sans-serif; font-size: 13px; font-weight: 500; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
     .tab-btn i { font-size: 15px; }
     .tab-btn:hover:not(.active) { background: var(--sage-pale); color: var(--sage-mid); }
-    .tab-btn.active {
-      background: var(--sage-light);
-      color: var(--sage-dark);
-    }
-
+    .tab-btn.active { background: var(--sage-light); color: var(--sage-dark); }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* ── CARDS ───────────────────────────────────────── */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    .card-title {
-      font-family: 'Lora', serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--sage-dark);
-      margin-bottom: 0.35rem;
-    }
-    .card-desc {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      margin-bottom: 1.1rem;
-      line-height: 1.6;
-    }
+    /* CARDS */
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1rem; }
+    .card-title { font-family: 'Lora', serif; font-size: 17px; font-weight: 600; color: var(--sage-dark); margin-bottom: 0.3rem; }
+    .card-desc { font-size: 13.5px; color: var(--text-muted); margin-bottom: 1.1rem; line-height: 1.6; }
 
-    /* ── QUICK CHIPS ─────────────────────────────────── */
-    .chips-label {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--text-faint);
-      margin-bottom: 8px;
-    }
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 1.1rem;
-    }
-    .chip {
-      padding: 5px 13px;
-      border: 1px solid var(--border-mid);
-      border-radius: 99px;
-      font-size: 13px;
-      cursor: pointer;
-      color: var(--text-muted);
-      background: #fff;
-      font-family: 'Source Sans 3', sans-serif;
-      transition: all 0.12s;
-    }
-    .chip:hover {
-      background: var(--sage-light);
-      border-color: var(--sage);
-      color: var(--sage-dark);
-    }
+    /* SEARCH */
+    .search-wrap { position: relative; margin-bottom: 1rem; }
+    .search-wrap i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 17px; color: var(--text-faint); pointer-events: none; }
+    .search-wrap input { width: 100%; padding: 11px 13px 11px 38px; border: 1px solid var(--border-mid); border-radius: var(--radius-md); font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: var(--text-main); background: #fff; outline: none; transition: border-color 0.15s, box-shadow 0.15s; }
+    .search-wrap input:focus { border-color: var(--sage); box-shadow: 0 0 0 3px rgba(99,153,34,0.12); }
 
-    /* ── FORM ELEMENTS ───────────────────────────────── */
-    .field-label {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--text-faint);
-      display: block;
-      margin-bottom: 6px;
-    }
-    input[type="text"], textarea, select {
-      width: 100%;
-      padding: 10px 13px;
-      border: 1px solid var(--border-mid);
-      border-radius: var(--radius-md);
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 14px;
-      color: var(--text-main);
-      background: #fff;
-      outline: none;
-      transition: border-color 0.15s, box-shadow 0.15s;
-      line-height: 1.5;
-    }
-    input[type="text"]:focus, textarea:focus {
-      border-color: var(--sage);
-      box-shadow: 0 0 0 3px rgba(99,153,34,0.12);
-    }
+    /* INGREDIENT RESULTS */
+    .ing-results { display: none; }
+    .ing-results.visible { display: block; }
+    .ing-count { font-size: 12px; color: var(--text-faint); margin-bottom: 10px; }
+    .ing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+    .ing-card { border-radius: var(--radius-md); padding: 12px 14px; border: 1px solid transparent; }
+    .ing-card.safe { background: var(--herb-light); border-color: rgba(29,158,117,0.2); }
+    .ing-card.avoid { background: var(--red-light); border-color: rgba(163,45,45,0.2); }
+    .ing-card.caution { background: var(--warm-light); border-color: rgba(186,117,23,0.2); }
+    .ing-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+    .ing-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
+    .safe .ing-badge { background: var(--herb); color: #fff; }
+    .avoid .ing-badge { background: var(--red-dark); color: #fff; }
+    .caution .ing-badge { background: var(--warm); color: #fff; }
+    .ing-name { font-size: 14px; font-weight: 600; }
+    .safe .ing-name { color: var(--herb-dark); }
+    .avoid .ing-name { color: var(--red-dark); }
+    .caution .ing-name { color: var(--warm-dark); }
+    .ing-note { font-size: 12.5px; line-height: 1.55; }
+    .safe .ing-note { color: var(--herb-dark); opacity: 0.85; }
+    .avoid .ing-note { color: var(--red-dark); opacity: 0.85; }
+    .caution .ing-note { color: var(--warm-dark); opacity: 0.85; }
+    .ing-alt { font-size: 12px; margin-top: 5px; font-style: italic; }
+    .safe .ing-alt { color: var(--herb-dark); }
+    .avoid .ing-alt { color: var(--red-dark); }
+    .caution .ing-alt { color: var(--warm-dark); }
+    .no-results { text-align: center; padding: 2rem; color: var(--text-faint); font-size: 14px; }
+
+    /* CATEGORY FILTER */
+    .filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1rem; }
+    .filter-chip { padding: 5px 13px; border: 1px solid var(--border-mid); border-radius: 99px; font-size: 12.5px; cursor: pointer; color: var(--text-muted); background: #fff; font-family: 'Source Sans 3', sans-serif; transition: all 0.12s; }
+    .filter-chip:hover, .filter-chip.active { border-color: var(--sage); background: var(--sage-light); color: var(--sage-dark); }
+    .filter-chip.active-avoid { border-color: var(--red-dark); background: var(--red-light); color: var(--red-dark); }
+    .filter-chip.active-caution { border-color: var(--warm); background: var(--warm-light); color: var(--warm-dark); }
+
+    /* QUICK CHIPS */
+    .chips-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-faint); margin-bottom: 8px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.1rem; }
+    .chip { padding: 5px 13px; border: 1px solid var(--border-mid); border-radius: 99px; font-size: 13px; cursor: pointer; color: var(--text-muted); background: #fff; font-family: 'Source Sans 3', sans-serif; transition: all 0.12s; }
+    .chip:hover { background: var(--sage-light); border-color: var(--sage); color: var(--sage-dark); }
+
+    /* FORM */
+    .field-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-faint); display: block; margin-bottom: 6px; }
+    input[type="text"], textarea { width: 100%; padding: 10px 13px; border: 1px solid var(--border-mid); border-radius: var(--radius-md); font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: var(--text-main); background: #fff; outline: none; transition: border-color 0.15s, box-shadow 0.15s; line-height: 1.5; }
+    input[type="text"]:focus, textarea:focus { border-color: var(--sage); box-shadow: 0 0 0 3px rgba(99,153,34,0.12); }
     textarea { resize: vertical; min-height: 110px; }
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1rem; }
 
-    /* ── BUTTONS ─────────────────────────────────────── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 10px 20px;
-      border-radius: var(--radius-md);
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      border: none;
-      transition: all 0.15s;
-    }
-    .btn-primary {
-      background: var(--sage);
-      color: #fff;
-    }
+    /* BUTTONS */
+    .btn { display: inline-flex; align-items: center; gap: 7px; padding: 10px 20px; border-radius: var(--radius-md); font-family: 'Source Sans 3', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.15s; }
+    .btn-primary { background: var(--sage); color: #fff; }
     .btn-primary:hover { background: var(--sage-mid); }
     .btn-primary:disabled { opacity: 0.45; cursor: not-allowed; }
     .btn i { font-size: 16px; }
+    .action-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+    .action-hint { font-size: 12.5px; color: var(--text-faint); }
 
-    .action-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
-    .action-hint {
-      font-size: 12.5px;
-      color: var(--text-faint);
-    }
-
-    /* ── LOADING ─────────────────────────────────────── */
-    .loading {
-      display: none;
-      align-items: center;
-      gap: 5px;
-      padding: 1rem 0 0.5rem;
-    }
+    /* LOADING */
+    .loading { display: none; align-items: center; gap: 5px; padding: 1rem 0 0.5rem; }
     .loading.visible { display: flex; }
     .loading-text { font-size: 13px; color: var(--text-muted); margin-right: 4px; }
-    .dot {
-      width: 7px; height: 7px;
-      background: var(--sage);
-      border-radius: 50%;
-      animation: bounce 1.2s infinite;
-    }
+    .dot { width: 7px; height: 7px; background: var(--sage); border-radius: 50%; animation: bounce 1.2s infinite; }
     .dot:nth-child(3) { animation-delay: 0.2s; }
     .dot:nth-child(4) { animation-delay: 0.4s; }
-    @keyframes bounce {
-      0%,80%,100% { transform: translateY(0); opacity: 0.4; }
-      40% { transform: translateY(-5px); opacity: 1; }
-    }
+    @keyframes bounce { 0%,80%,100% { transform: translateY(0); opacity: 0.4; } 40% { transform: translateY(-5px); opacity: 1; } }
 
-    /* ── RESULT BOX ──────────────────────────────────── */
-    .result {
-      display: none;
-      margin-top: 1rem;
-      background: var(--sage-pale);
-      border: 1px solid rgba(99,153,34,0.2);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
+    /* RESULT */
+    .result { display: none; margin-top: 1rem; background: var(--sage-pale); border: 1px solid rgba(99,153,34,0.2); border-radius: var(--radius-lg); overflow: hidden; }
     .result.visible { display: block; }
-    .result-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 16px;
-      background: var(--sage-light);
-      border-bottom: 1px solid rgba(99,153,34,0.18);
-    }
-    .result-label {
-      font-size: 11.5px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--sage-dark);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .result-label i { font-size: 14px; }
-    .copy-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 10px;
-      background: #fff;
-      border: 1px solid var(--border-mid);
-      border-radius: var(--radius-sm);
-      font-size: 12px;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-family: 'Source Sans 3', sans-serif;
-      transition: all 0.12s;
-    }
+    .result-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: var(--sage-light); border-bottom: 1px solid rgba(99,153,34,0.18); }
+    .result-label { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--sage-dark); display: flex; align-items: center; gap: 6px; }
+    .copy-btn { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; background: #fff; border: 1px solid var(--border-mid); border-radius: var(--radius-sm); font-size: 12px; color: var(--text-muted); cursor: pointer; font-family: 'Source Sans 3', sans-serif; transition: all 0.12s; }
     .copy-btn:hover { background: var(--sage-light); color: var(--sage-dark); border-color: var(--sage); }
-    .result-body {
-      padding: 1.1rem 1.25rem;
-      font-size: 14.5px;
-      line-height: 1.85;
-      color: var(--text-main);
-      white-space: pre-wrap;
-    }
+    .result-body { padding: 1.1rem 1.25rem; font-size: 14.5px; line-height: 1.85; color: var(--text-main); white-space: pre-wrap; }
 
-    /* ── ERROR ───────────────────────────────────────── */
-    .err {
-      display: none;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      color: var(--red-dark);
-      background: var(--red-light);
-      border-radius: var(--radius-sm);
-      padding: 8px 12px;
-      margin-top: 8px;
-    }
+    /* ERROR */
+    .err { display: none; align-items: center; gap: 6px; font-size: 13px; color: var(--red-dark); background: var(--red-light); border-radius: var(--radius-sm); padding: 8px 12px; margin-top: 8px; }
     .err.visible { display: flex; }
 
-    /* ── SAFE REFERENCE ──────────────────────────────── */
-    .reference-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .ref-card {
-      border-radius: var(--radius-md);
-      padding: 1rem 1.1rem;
-    }
+    /* DISCLAIMER */
+    .disclaimer { background: var(--warm-light); border: 1px solid rgba(186,117,23,0.25); border-radius: var(--radius-md); padding: 10px 14px; font-size: 13px; color: var(--warm-dark); display: flex; align-items: flex-start; gap: 8px; margin-bottom: 1.25rem; line-height: 1.6; }
+    .disclaimer i { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+
+    /* REFERENCE SECTIONS */
+    .ref-section { margin-bottom: 1.5rem; }
+    .ref-section-title { font-family: 'Lora', serif; font-size: 15px; font-weight: 600; color: var(--sage-dark); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 7px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    .ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+    .ref-card { border-radius: var(--radius-md); padding: 1rem 1.1rem; }
     .ref-card.safe { background: var(--herb-light); border: 1px solid rgba(29,158,117,0.2); }
     .ref-card.avoid { background: var(--red-light); border: 1px solid rgba(163,45,45,0.2); }
     .ref-card.caution { background: var(--warm-light); border: 1px solid rgba(186,117,23,0.2); }
-    .ref-card h3 {
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+    .ref-card h3 { font-size: 13px; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
     .ref-card.safe h3 { color: var(--herb-dark); }
     .ref-card.avoid h3 { color: var(--red-dark); }
     .ref-card.caution h3 { color: var(--warm-dark); }
     .ref-card ul { list-style: none; padding: 0; }
-    .ref-card ul li {
-      font-size: 13px;
-      padding: 2px 0;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+    .ref-card ul li { font-size: 13px; padding: 2.5px 0; display: flex; align-items: flex-start; gap: 7px; line-height: 1.5; }
     .ref-card.safe ul li { color: var(--herb-dark); }
     .ref-card.avoid ul li { color: var(--red-dark); }
     .ref-card.caution ul li { color: var(--warm-dark); }
-    .ref-card ul li::before {
-      content: '';
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
+    .ref-card ul li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
     .ref-card.safe ul li::before { background: var(--herb); }
     .ref-card.avoid ul li::before { background: var(--red-dark); }
     .ref-card.caution ul li::before { background: var(--warm); }
 
-    /* ── FOOTER ──────────────────────────────────────── */
-    footer {
-      background: #fff;
-      border-top: 1px solid var(--border);
-      padding: 1.5rem 2rem;
-      text-align: center;
-    }
-    footer p {
-      font-size: 12.5px;
-      color: var(--text-faint);
-      line-height: 1.7;
-    }
+    /* NON-FOOD SECTION */
+    .nonfood-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin-top: 10px; }
+    .nonfood-card { background: #f5f0fb; border: 1px solid rgba(120,60,180,0.15); border-radius: var(--radius-md); padding: 12px 14px; }
+    .nonfood-card h4 { font-size: 13px; font-weight: 600; color: #4a1c8a; margin-bottom: 5px; display: flex; align-items: center; gap: 6px; }
+    .nonfood-card p { font-size: 12.5px; color: #5a3080; line-height: 1.55; }
+
+    /* ASK TABS */
+    .ask-subtabs { display: flex; gap: 6px; margin-bottom: 1rem; flex-wrap: wrap; }
+    .ask-subtab { padding: 6px 14px; border: 1px solid var(--border-mid); border-radius: 99px; font-size: 13px; font-weight: 500; cursor: pointer; background: #fff; color: var(--text-muted); font-family: 'Source Sans 3', sans-serif; transition: all 0.12s; }
+    .ask-subtab:hover { background: var(--sage-light); border-color: var(--sage); color: var(--sage-dark); }
+    .ask-subtab.active { background: var(--sage-light); border-color: var(--sage); color: var(--sage-dark); }
+    .ask-panel { display: none; }
+    .ask-panel.active { display: block; }
+
+    /* FOOTER */
+    footer { background: #fff; border-top: 1px solid var(--border); padding: 1.5rem 2rem; text-align: center; }
+    footer p { font-size: 12.5px; color: var(--text-faint); line-height: 1.8; }
     footer a { color: var(--herb); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    /* ── DISCLAIMER BANNER ───────────────────────────── */
-    .disclaimer {
-      background: var(--warm-light);
-      border: 1px solid rgba(186,117,23,0.25);
-      border-radius: var(--radius-md);
-      padding: 10px 14px;
-      font-size: 12.5px;
-      color: var(--warm-dark);
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 1.25rem;
-    }
-    .disclaimer i { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-
-    /* ── RESPONSIVE ──────────────────────────────────── */
+    /* RESPONSIVE */
     @media (max-width: 600px) {
-      .hero { padding: 2.5rem 1.25rem 2rem; }
+      .hero { padding: 2rem 1.25rem 1.75rem; }
       .main { padding: 1.25rem 1rem 3rem; }
       .two-col { grid-template-columns: 1fr; }
-      .reference-grid { grid-template-columns: 1fr; }
       .tab-btn span { display: none; }
-      .api-key-row { flex-direction: column; align-items: stretch; }
-      .key-save-btn { width: 100%; text-align: center; }
+      .header-link { display: none; }
     }
   </style>
 </head>
@@ -566,45 +234,26 @@
 <div class="bonus-banner">
   <i class="ti ti-gift"></i>
   This tool is a free bonus for buying any Cookbook by Rachel Baldwin /
-  <a href="https://rlbdesigns.com" target="_blank" rel="noopener">RLB Designs</a>
+  <a href="https://www.rlbdesigns.com" target="_blank" rel="noopener">RLB Designs</a>
 </div>
 
 <!-- HEADER -->
 <header class="site-header">
   <div class="header-inner">
-    <a href="https://rlbdesigns.com" class="site-logo" target="_blank" rel="noopener">
+    <a href="https://www.rlbdesigns.com" class="site-logo" target="_blank" rel="noopener">
       <div class="logo-icon"><i class="ti ti-leaf"></i></div>
-      <span class="logo-text">
-        Rachel Baldwin
-        <span class="logo-sub">RLB Designs</span>
-      </span>
+      <span class="logo-text">Rachel Baldwin<span class="logo-sub">RLB Designs</span></span>
     </a>
-    <a href="https://rlbdesigns.com" class="header-link" target="_blank" rel="noopener">Shop Cookbooks at RLBDesigns.com →</a>
+    <a href="https://www.rlbdesigns.com" class="header-link" target="_blank" rel="noopener">Shop Cookbooks at RLBDesigns.com →</a>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">
-    <i class="ti ti-shield-check"></i>
-    Alpha-Gal Syndrome Safe Kitchen
-  </div>
+  <div class="hero-badge"><i class="ti ti-shield-check"></i> Alpha-Gal Syndrome Safe Kitchen</div>
   <h1>Alpha-Gal Safe Recipe Finder</h1>
   <p class="hero-byline">by <strong>Rachel Baldwin</strong> &bull; RLB Designs</p>
-  <p>Check ingredients, adapt recipes, and find mammal-free substitutions — an AI-powered resource for the AGS community, from the cookbooks of Rachel Baldwin / RLBDesigns.</p>
-
-  <div class="api-key-row">
-    <i class="ti ti-key"></i>
-    <input type="password" id="api-key-input" placeholder="Paste your Anthropic API key to get started" autocomplete="off" />
-    <button class="key-save-btn" onclick="saveKey()">Save key</button>
-  </div>
-  <p class="key-hint">
-    Your key stays in your browser only — never sent anywhere except Anthropic.
-    <a href="https://console.anthropic.com/" target="_blank" rel="noopener">Get a free API key →</a>
-  </p>
-  <div id="key-status" class="key-status unset">
-    <i class="ti ti-circle-x" style="font-size:14px"></i> No API key set
-  </div>
+  <p>Check ingredients, adapt recipes, and find mammal-free substitutions — an AI-powered resource for the AGS community.</p>
 </section>
 
 <!-- MAIN -->
@@ -612,251 +261,406 @@
 
   <div class="disclaimer">
     <i class="ti ti-info-circle"></i>
-    <span>This tool provides general AGS safety guidance. Individual sensitivities vary — always verify with your allergist or physician, and read product labels carefully.</span>
+    <span>This tool provides general AGS safety guidance. Individual sensitivities vary — always verify with your allergist or physician, and read product labels carefully. <strong>Note:</strong> Some people with AGS are also sensitive to shellfish, poultry, and/or eggs. Please check with your allergist before using any product you are unsure about.</span>
   </div>
 
   <!-- TABS NAV -->
   <div class="tabs-nav" role="tablist">
-    <button class="tab-btn active" role="tab" aria-selected="true" onclick="switchTab('check')">
-      <i class="ti ti-shield-check"></i><span>Ingredient Check</span>
-    </button>
-    <button class="tab-btn" role="tab" onclick="switchTab('adapt')">
-      <i class="ti ti-wand"></i><span>Adapt a Recipe</span>
-    </button>
-    <button class="tab-btn" role="tab" onclick="switchTab('sub')">
-      <i class="ti ti-arrows-exchange"></i><span>Substitutions</span>
-    </button>
-    <button class="tab-btn" role="tab" onclick="switchTab('ask')">
-      <i class="ti ti-message-circle"></i><span>Ask Anything</span>
-    </button>
-    <button class="tab-btn" role="tab" onclick="switchTab('ref')">
-      <i class="ti ti-list"></i><span>Safe List</span>
-    </button>
+    <button class="tab-btn active" onclick="switchTab('search')"><i class="ti ti-search"></i><span>Search Ingredients</span></button>
+    <button class="tab-btn" onclick="switchTab('adapt')"><i class="ti ti-wand"></i><span>Adapt a Recipe</span></button>
+    <button class="tab-btn" onclick="switchTab('sub')"><i class="ti ti-arrows-exchange"></i><span>Substitutions</span></button>
+    <button class="tab-btn" onclick="switchTab('ask')"><i class="ti ti-message-circle"></i><span>Ask Anything</span></button>
+    <button class="tab-btn" onclick="switchTab('ref')"><i class="ti ti-list"></i><span>Safe Reference</span></button>
   </div>
 
-  <!-- TAB: Ingredient Check -->
-  <div id="tab-check" class="tab-panel active">
+  <!-- ══════════════════════════════════════════════
+       TAB 1: INGREDIENT SEARCH (no API needed)
+  ══════════════════════════════════════════════ -->
+  <div id="tab-search" class="tab-panel active">
     <div class="card">
-      <div class="card-title">Ingredient Safety Check</div>
-      <div class="card-desc">Enter any ingredient or list of ingredients to instantly find out if they are safe for Alpha-Gal Syndrome — with explanations and alternatives.</div>
+      <div class="card-title">Ingredient Safety Search</div>
+      <div class="card-desc">Search our database of 150+ ingredients — instantly see if each is safe, unsafe, or requires caution for Alpha-Gal Syndrome. No account needed.</div>
 
-      <div class="chips-label">Common problem ingredients — tap to check:</div>
-      <div class="chips">
-        <button class="chip" onclick="quickCheck('Worcestershire sauce')">Worcestershire sauce</button>
-        <button class="chip" onclick="quickCheck('gelatin')">Gelatin</button>
-        <button class="chip" onclick="quickCheck('lard')">Lard</button>
-        <button class="chip" onclick="quickCheck('carmine / cochineal red dye')">Carmine (red dye)</button>
-        <button class="chip" onclick="quickCheck('beef broth or bone broth from beef')">Beef broth</button>
-        <button class="chip" onclick="quickCheck('suet')">Suet</button>
-        <button class="chip" onclick="quickCheck('rennet')">Rennet</button>
-        <button class="chip" onclick="quickCheck('marshmallows')">Marshmallows</button>
-        <button class="chip" onclick="quickCheck('anchovies and fish sauce')">Anchovies / fish sauce</button>
-        <button class="chip" onclick="quickCheck('duck fat')">Duck fat</button>
-        <button class="chip" onclick="quickCheck('natural flavors in packaged food')">Natural flavors</button>
-        <button class="chip" onclick="quickCheck('mono and diglycerides')">Mono- & diglycerides</button>
+      <div class="search-wrap">
+        <i class="ti ti-search"></i>
+        <input type="text" id="ing-search" placeholder="Search any ingredient — e.g. gelatin, lard, duck fat, agar-agar…" oninput="searchIngredients()" />
       </div>
 
-      <label class="field-label" for="check-input">Or type your own (comma-separated):</label>
-      <input type="text" id="check-input" placeholder="e.g. cream cheese, chicken stock, agar-agar, maple syrup" />
-      <div class="action-row">
-        <button class="btn btn-primary" id="check-btn" onclick="runCheck()">
-          <i class="ti ti-shield-check"></i> Check ingredients
-        </button>
-        <span class="action-hint">Each ingredient assessed individually</span>
+      <div class="filter-row">
+        <button class="filter-chip active" onclick="setFilter('all', this)">All</button>
+        <button class="filter-chip" onclick="setFilter('safe', this)"><i class="ti ti-check" style="font-size:12px;vertical-align:-1px"></i> Safe</button>
+        <button class="filter-chip" onclick="setFilter('avoid', this)"><i class="ti ti-x" style="font-size:12px;vertical-align:-1px"></i> Avoid</button>
+        <button class="filter-chip" onclick="setFilter('caution', this)"><i class="ti ti-alert-triangle" style="font-size:12px;vertical-align:-1px"></i> Use Caution</button>
       </div>
-      <div class="err" id="check-err"><i class="ti ti-alert-circle"></i> Please enter at least one ingredient.</div>
-      <div class="loading" id="check-loading">
-        <span class="loading-text">Checking safety</span>
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-      </div>
-      <div class="result" id="check-result">
-        <div class="result-header">
-          <span class="result-label"><i class="ti ti-shield-check"></i> AGS Safety Report</span>
-          <button class="copy-btn" onclick="copyResult('check-result')"><i class="ti ti-copy" style="font-size:13px"></i> Copy</button>
-        </div>
-        <div class="result-body"></div>
+
+      <div class="ing-results visible" id="ing-results">
+        <div class="ing-count" id="ing-count"></div>
+        <div class="ing-grid" id="ing-grid"></div>
       </div>
     </div>
   </div>
 
-  <!-- TAB: Adapt a Recipe -->
+  <!-- ══════════════════════════════════════════════
+       TAB 2: ADAPT A RECIPE (AI)
+  ══════════════════════════════════════════════ -->
   <div id="tab-adapt" class="tab-panel">
     <div class="card">
       <div class="card-title">Adapt Any Recipe for AGS</div>
-      <div class="card-desc">Paste a full recipe below. The AI will identify every mammal-derived ingredient, explain the risk, and rewrite the recipe with safe substitutions in place — preserving the dish's flavor and texture.</div>
-
+      <div class="card-desc">Paste a full recipe below. The AI will identify every mammal-derived ingredient and rewrite the recipe with safe substitutions in place.</div>
       <label class="field-label" for="adapt-input">Paste your recipe here:</label>
       <textarea id="adapt-input" rows="8" placeholder="Include both ingredients and instructions. Works with any cuisine — baked goods, soups, sauces, casseroles, desserts, and more."></textarea>
-
       <div class="action-row">
-        <button class="btn btn-primary" id="adapt-btn" onclick="runAdapt()">
-          <i class="ti ti-wand"></i> Adapt this recipe
-        </button>
+        <button class="btn btn-primary" id="adapt-btn" onclick="runAdapt()"><i class="ti ti-wand"></i> Adapt this recipe</button>
       </div>
       <div class="err" id="adapt-err"><i class="ti ti-alert-circle"></i> Please paste a recipe to adapt.</div>
-      <div class="loading" id="adapt-loading">
-        <span class="loading-text">Adapting your recipe</span>
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-      </div>
+      <div class="loading" id="adapt-loading"><span class="loading-text">Adapting your recipe</span><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
       <div class="result" id="adapt-result">
-        <div class="result-header">
-          <span class="result-label"><i class="ti ti-wand"></i> AGS-Safe Adaptation</span>
-          <button class="copy-btn" onclick="copyResult('adapt-result')"><i class="ti ti-copy" style="font-size:13px"></i> Copy</button>
-        </div>
+        <div class="result-header"><span class="result-label"><i class="ti ti-wand"></i> AGS-Safe Adaptation</span><button class="copy-btn" onclick="copyResult('adapt-result')"><i class="ti ti-copy" style="font-size:13px"></i> Copy</button></div>
         <div class="result-body"></div>
       </div>
     </div>
   </div>
 
-  <!-- TAB: Substitutions -->
+  <!-- ══════════════════════════════════════════════
+       TAB 3: SUBSTITUTIONS (AI)
+  ══════════════════════════════════════════════ -->
   <div id="tab-sub" class="tab-panel">
     <div class="card">
       <div class="card-title">Find a Safe Substitution</div>
-      <div class="card-desc">Enter the ingredient you need to replace and what you're making. You'll receive 2–4 AGS-safe alternatives with exact ratios and practical notes.</div>
-
+      <div class="card-desc">Enter the ingredient you need to replace and what you're making. Get 2–4 AGS-safe alternatives with exact ratios and practical tips.</div>
       <div class="two-col">
         <div>
           <label class="field-label" for="sub-from">Ingredient to replace:</label>
-          <input type="text" id="sub-from" placeholder="e.g. beef stock, lard, gelatin, butter" />
+          <input type="text" id="sub-from" placeholder="e.g. beef stock, lard, gelatin" />
         </div>
         <div>
           <label class="field-label" for="sub-context">What are you making? (optional)</label>
           <input type="text" id="sub-context" placeholder="e.g. pie crust, stew, Jell-O mold" />
         </div>
       </div>
-
       <div class="action-row">
-        <button class="btn btn-primary" id="sub-btn" onclick="runSub()">
-          <i class="ti ti-arrows-exchange"></i> Find substitutes
-        </button>
+        <button class="btn btn-primary" id="sub-btn" onclick="runSub()"><i class="ti ti-arrows-exchange"></i> Find substitutes</button>
         <span class="action-hint">Ratios and tips included</span>
       </div>
       <div class="err" id="sub-err"><i class="ti ti-alert-circle"></i> Please enter an ingredient to substitute.</div>
-      <div class="loading" id="sub-loading">
-        <span class="loading-text">Finding alternatives</span>
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-      </div>
+      <div class="loading" id="sub-loading"><span class="loading-text">Finding alternatives</span><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
       <div class="result" id="sub-result">
-        <div class="result-header">
-          <span class="result-label"><i class="ti ti-arrows-exchange"></i> Safe Substitution Options</span>
-          <button class="copy-btn" onclick="copyResult('sub-result')"><i class="ti ti-copy" style="font-size:13px"></i> Copy</button>
-        </div>
+        <div class="result-header"><span class="result-label"><i class="ti ti-arrows-exchange"></i> Safe Substitution Options</span><button class="copy-btn" onclick="copyResult('sub-result')"><i class="ti ti-copy" style="font-size:13px"></i> Copy</button></div>
         <div class="result-body"></div>
       </div>
     </div>
   </div>
 
-  <!-- TAB: Ask Anything -->
+  <!-- ══════════════════════════════════════════════
+       TAB 4: ASK ANYTHING (AI) — with sub-topics
+  ══════════════════════════════════════════════ -->
   <div id="tab-ask" class="tab-panel">
     <div class="card">
       <div class="card-title">Ask the AGS Advisor</div>
-      <div class="card-desc">Have a question about Alpha-Gal safety that doesn't fit the other tools? Ask anything — label reading, restaurant tips, hidden sources of alpha-gal, cooking techniques, and more.</div>
+      <div class="card-desc">Choose a topic area below, then ask your question. Our AI advisor covers food safety, hidden ingredients, medications, non-food products, restaurant tips, and more.</div>
 
-      <div class="chips-label">Example questions:</div>
-      <div class="chips">
-        <button class="chip" onclick="setAsk('Is pepperoni safe for Alpha-Gal Syndrome?')">Is pepperoni safe?</button>
-        <button class="chip" onclick="setAsk('What thickeners can I use instead of gelatin in desserts?')">Gelatin alternatives in desserts</button>
-        <button class="chip" onclick="setAsk('What should I watch out for on restaurant menus with Alpha-Gal Syndrome?')">Restaurant red flags</button>
-        <button class="chip" onclick="setAsk('Are food colorings and dyes safe for Alpha-Gal Syndrome?')">Food dyes & colorings</button>
-        <button class="chip" onclick="setAsk('What cooking fats are completely safe for Alpha-Gal Syndrome?')">Safe cooking fats</button>
-        <button class="chip" onclick="setAsk('Can I use chicken broth in place of beef broth in any recipe?')">Chicken broth as sub for beef</button>
+      <div class="ask-subtabs">
+        <button class="ask-subtab active" onclick="switchAskTab('food')"><i class="ti ti-salad" style="font-size:14px;vertical-align:-2px;margin-right:3px"></i>Food Safety</button>
+        <button class="ask-subtab" onclick="switchAskTab('hidden')"><i class="ti ti-eye-off" style="font-size:14px;vertical-align:-2px;margin-right:3px"></i>Hidden Ingredients</button>
+        <button class="ask-subtab" onclick="switchAskTab('meds')"><i class="ti ti-pill" style="font-size:14px;vertical-align:-2px;margin-right:3px"></i>Medications &amp; Products</button>
+        <button class="ask-subtab" onclick="switchAskTab('dining')"><i class="ti ti-building-store" style="font-size:14px;vertical-align:-2px;margin-right:3px"></i>Dining Out</button>
+        <button class="ask-subtab" onclick="switchAskTab('other')"><i class="ti ti-help" style="font-size:14px;vertical-align:-2px;margin-right:3px"></i>Other</button>
       </div>
 
-      <label class="field-label" for="ask-input">Your question:</label>
-      <textarea id="ask-input" rows="4" placeholder="Type any Alpha-Gal safety question here..."></textarea>
+      <!-- Food Safety panel -->
+      <div class="ask-panel active" id="ask-food">
+        <div class="chips-label">Quick questions:</div>
+        <div class="chips">
+          <button class="chip" onclick="setAsk('Is pepperoni safe for Alpha-Gal Syndrome?')">Is pepperoni safe?</button>
+          <button class="chip" onclick="setAsk('What cooking fats are completely safe for Alpha-Gal Syndrome?')">Safe cooking fats</button>
+          <button class="chip" onclick="setAsk('Can I use chicken broth in all recipes that call for beef broth?')">Chicken vs beef broth</button>
+          <button class="chip" onclick="setAsk('Are eggs safe for Alpha-Gal Syndrome?')">Are eggs safe?</button>
+          <button class="chip" onclick="setAsk('Is carrageenan safe for Alpha-Gal Syndrome?')">Is carrageenan safe?</button>
+          <button class="chip" onclick="setAsk('What thickeners can I use instead of gelatin?')">Gelatin alternatives</button>
+        </div>
+      </div>
 
+      <!-- Hidden Ingredients panel -->
+      <div class="ask-panel" id="ask-hidden">
+        <div class="chips-label">Quick questions:</div>
+        <div class="chips">
+          <button class="chip" onclick="setAsk('What does \"natural flavors\" mean on a label and is it safe for AGS?')">"Natural flavors" on labels</button>
+          <button class="chip" onclick="setAsk('Are food colorings and dyes safe for Alpha-Gal Syndrome?')">Food dyes &amp; colorings</button>
+          <button class="chip" onclick="setAsk('Is glycerin in food products safe for Alpha-Gal Syndrome?')">Glycerin in food</button>
+          <button class="chip" onclick="setAsk('What is magnesium stearate and is it safe for AGS?')">Magnesium stearate</button>
+          <button class="chip" onclick="setAsk('Are mono and diglycerides safe for Alpha-Gal Syndrome?')">Mono- &amp; diglycerides</button>
+          <button class="chip" onclick="setAsk('What are hidden sources of lard in packaged foods?')">Hidden lard sources</button>
+        </div>
+      </div>
+
+      <!-- Medications & Products panel -->
+      <div class="ask-panel" id="ask-meds">
+        <div class="disclaimer" style="margin-bottom:10px;">
+          <i class="ti ti-alert-triangle"></i>
+          <span>Always consult your doctor or pharmacist before starting or stopping any medication or supplement. This information is general guidance only.</span>
+        </div>
+        <div class="chips-label">Quick questions:</div>
+        <div class="chips">
+          <button class="chip" onclick="setAsk('Which medications contain gelatin capsules that AGS patients should watch for?')">Gelatin capsules in meds</button>
+          <button class="chip" onclick="setAsk('Is heparin safe for Alpha-Gal Syndrome patients?')">Heparin &amp; AGS</button>
+          <button class="chip" onclick="setAsk('Which vaccines contain mammalian ingredients that could affect AGS patients?')">Vaccines &amp; AGS</button>
+          <button class="chip" onclick="setAsk('Is lanolin in cosmetics and skincare safe for Alpha-Gal Syndrome?')">Lanolin in cosmetics</button>
+          <button class="chip" onclick="setAsk('Is glycerin in soaps and lotions safe for Alpha-Gal Syndrome?')">Glycerin in skincare</button>
+          <button class="chip" onclick="setAsk('What should AGS patients tell their doctor before surgery?')">Before surgery</button>
+        </div>
+      </div>
+
+      <!-- Dining Out panel -->
+      <div class="ask-panel" id="ask-dining">
+        <div class="chips-label">Quick questions:</div>
+        <div class="chips">
+          <button class="chip" onclick="setAsk('What should I watch out for on restaurant menus with Alpha-Gal Syndrome?')">Restaurant red flags</button>
+          <button class="chip" onclick="setAsk('How do I explain Alpha-Gal Syndrome to a restaurant server?')">Explaining AGS to servers</button>
+          <button class="chip" onclick="setAsk('What cuisines are generally safer for Alpha-Gal Syndrome?')">Safer cuisine types</button>
+          <button class="chip" onclick="setAsk('What fast food options are safe for Alpha-Gal Syndrome?')">Safe fast food options</button>
+          <button class="chip" onclick="setAsk('Are sauces and gravies at restaurants safe for AGS?')">Sauces &amp; gravies</button>
+        </div>
+      </div>
+
+      <!-- Other panel -->
+      <div class="ask-panel" id="ask-other">
+        <div class="chips-label">Quick questions:</div>
+        <div class="chips">
+          <button class="chip" onclick="setAsk('What is Alpha-Gal Syndrome and what causes it?')">What is AGS?</button>
+          <button class="chip" onclick="setAsk('How do I read a nutrition label to check for AGS safety?')">Reading labels</button>
+          <button class="chip" onclick="setAsk('What are the symptoms of an alpha-gal reaction?')">AGS reaction symptoms</button>
+          <button class="chip" onclick="setAsk('Can AGS sensitivity change over time?')">Does AGS change over time?</button>
+        </div>
+      </div>
+
+      <label class="field-label" for="ask-input" style="margin-top:1rem;">Your question:</label>
+      <textarea id="ask-input" rows="3" placeholder="Type any Alpha-Gal safety question here, or click a topic above…"></textarea>
       <div class="action-row">
-        <button class="btn btn-primary" id="ask-btn" onclick="runAsk()">
-          <i class="ti ti-message-circle"></i> Ask the advisor
-        </button>
+        <button class="btn btn-primary" id="ask-btn" onclick="runAsk()"><i class="ti ti-message-circle"></i> Ask the advisor</button>
       </div>
       <div class="err" id="ask-err"><i class="ti ti-alert-circle"></i> Please type a question first.</div>
-      <div class="loading" id="ask-loading">
-        <span class="loading-text">Thinking</span>
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-      </div>
+      <div class="loading" id="ask-loading"><span class="loading-text">Thinking</span><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
       <div class="result" id="ask-result">
-        <div class="result-header">
-          <span class="result-label"><i class="ti ti-message-circle"></i> AGS Advisor Answer</span>
-          <button class="copy-btn" onclick="copyResult('ask-result')"><i class="ti ti-copy" style="font-size:13px"></i> Copy</button>
-        </div>
+        <div class="result-header"><span class="result-label"><i class="ti ti-message-circle"></i> AGS Advisor Answer</span><button class="copy-btn" onclick="copyResult('ask-result')"><i class="ti ti-copy" style="font-size:13px"></i> Copy</button></div>
         <div class="result-body"></div>
       </div>
     </div>
   </div>
 
-  <!-- TAB: Safe Reference List -->
+  <!-- ══════════════════════════════════════════════
+       TAB 5: SAFE REFERENCE
+  ══════════════════════════════════════════════ -->
   <div id="tab-ref" class="tab-panel">
     <div class="card">
-      <div class="card-title">AGS Quick Reference</div>
-      <div class="card-desc">A handy at-a-glance guide to Alpha-Gal safety for common food categories. Use the AI tools above for anything not on this list.</div>
+      <div class="card-title">AGS Safe Reference Guide</div>
+      <div class="card-desc">A comprehensive at-a-glance reference covering foods, hidden ingredients, non-food products, and medications. Compiled from AGS research and community knowledge.</div>
 
-      <div class="reference-grid">
-        <div class="ref-card safe">
-          <h3><i class="ti ti-check" style="font-size:15px"></i> Always Safe</h3>
-          <ul>
-            <li>Chicken, turkey, duck, goose</li>
-            <li>All fish and seafood</li>
-            <li>Eggs (any bird)</li>
-            <li>All fruits and vegetables</li>
-            <li>Grains, rice, pasta, bread</li>
-            <li>Legumes (beans, lentils)</li>
-            <li>Nuts and seeds</li>
-            <li>Plant-based oils (olive, coconut, avocado)</li>
-            <li>Coconut milk and cream</li>
-            <li>Plant-based milks (oat, almond, soy)</li>
-            <li>Vinegar, most condiments</li>
-            <li>Agar-agar (gelatin substitute)</li>
-            <li>Pectin (for jams and jellies)</li>
-          </ul>
+      <!-- SECTION 1: Meats & Proteins -->
+      <div class="ref-section">
+        <div class="ref-section-title"><i class="ti ti-meat"></i> Meats, Proteins &amp; Organs</div>
+        <div class="ref-grid">
+          <div class="ref-card avoid">
+            <h3><i class="ti ti-x" style="font-size:14px"></i> Never Safe — Mammal Meats</h3>
+            <ul>
+              <li>Beef, pork, lamb, veal</li>
+              <li>Venison (deer), bison, elk, boar</li>
+              <li>Rabbit, goat, horse</li>
+              <li>Organs: liver, kidney, heart, intestines, tongue, sweetbreads</li>
+              <li>Rocky Mountain / prairie oysters</li>
+            </ul>
+          </div>
+          <div class="ref-card safe">
+            <h3><i class="ti ti-check" style="font-size:14px"></i> Always Safe — Poultry &amp; Seafood</h3>
+            <ul>
+              <li>Chicken, turkey, duck, goose, quail</li>
+              <li>All fish (salmon, tuna, cod, tilapia…)</li>
+              <li>All shellfish (shrimp, crab, lobster, clams)*</li>
+              <li>Eggs (chicken, duck, quail)*</li>
+            </ul>
+          </div>
         </div>
+        <p style="font-size:12px;color:var(--warm-dark);margin-top:8px;background:var(--warm-light);padding:7px 10px;border-radius:6px;">* Some AGS individuals are also sensitive to shellfish and/or eggs. Always verify with your allergist.</p>
+      </div>
 
-        <div class="ref-card avoid">
-          <h3><i class="ti ti-x" style="font-size:15px"></i> Never Safe for AGS</h3>
-          <ul>
-            <li>Beef, pork, lamb, veal</li>
-            <li>Venison, bison, rabbit, elk</li>
-            <li>Horse, goat meat</li>
-            <li>Lard, suet, tallow</li>
-            <li>Gelatin (from mammal bones/skin)</li>
-            <li>Mammal dairy: milk, butter, cream</li>
-            <li>Cheese, whey, casein, lactose</li>
-            <li>Bone broth (from mammals)</li>
-            <li>Rennet (from animal stomachs)</li>
-            <li>Most marshmallows (contain gelatin)</li>
-            <li>Many Jell-O / gummy products</li>
-          </ul>
-        </div>
-
-        <div class="ref-card caution">
-          <h3><i class="ti ti-alert-triangle" style="font-size:15px"></i> Use Caution — Check Labels</h3>
-          <ul>
-            <li>Worcestershire sauce (check brand)</li>
-            <li>Carmine / cochineal (insect-derived red dye)</li>
-            <li>"Natural flavors" (may be mammal-derived)</li>
-            <li>Mono- & diglycerides (source varies)</li>
-            <li>Some vitamins (gelatin capsules)</li>
-            <li>Some medications and vaccines</li>
-            <li>Packaged soups and broths</li>
-            <li>Gravy mixes and seasoning packets</li>
-            <li>Some baked goods (hidden lard/butter)</li>
-          </ul>
-        </div>
-
-        <div class="ref-card safe">
-          <h3><i class="ti ti-replace"></i> Safe Swaps at a Glance</h3>
-          <ul>
-            <li>Butter → coconut oil or avocado oil</li>
-            <li>Lard → coconut oil or duck fat</li>
-            <li>Beef broth → chicken or vegetable broth</li>
-            <li>Gelatin → agar-agar (1:1) or pectin</li>
-            <li>Dairy milk → oat, almond, or coconut milk</li>
-            <li>Cream → full-fat coconut cream</li>
-            <li>Marshmallows → Dandies brand (vegan)</li>
-            <li>Rennet cheese → aged plant-based cheese</li>
-          </ul>
+      <!-- SECTION 2: Fats & Broths -->
+      <div class="ref-section">
+        <div class="ref-section-title"><i class="ti ti-droplet"></i> Fats, Broths &amp; Flavorings</div>
+        <div class="ref-grid">
+          <div class="ref-card avoid">
+            <h3><i class="ti ti-x" style="font-size:14px"></i> Avoid</h3>
+            <ul>
+              <li>Lard (rendered pork fat) — hidden in refried beans, pie crusts, tortillas</li>
+              <li>Tallow (rendered beef fat)</li>
+              <li>Suet (beef or mutton fat)</li>
+              <li>Beef, pork broth / bouillon / stock</li>
+              <li>Gravy (almost always mammal-based)</li>
+            </ul>
+          </div>
+          <div class="ref-card caution">
+            <h3><i class="ti ti-alert-triangle" style="font-size:14px"></i> Use Caution</h3>
+            <ul>
+              <li>Natural flavorings — may be animal-derived; always check with manufacturer</li>
+              <li>Smoke flavoring — occasionally animal-derived</li>
+              <li>Pre-seasoned meats — may contain mammal broths</li>
+            </ul>
+          </div>
+          <div class="ref-card safe">
+            <h3><i class="ti ti-check" style="font-size:14px"></i> Safe Alternatives</h3>
+            <ul>
+              <li>Coconut oil, avocado oil, olive oil</li>
+              <li>Duck fat, chicken schmaltz</li>
+              <li>Chicken broth, vegetable broth</li>
+              <li>Plant-based bouillon cubes</li>
+            </ul>
+          </div>
         </div>
       </div>
+
+      <!-- SECTION 3: Thickeners & Stabilizers -->
+      <div class="ref-section">
+        <div class="ref-section-title"><i class="ti ti-topology-star"></i> Thickeners &amp; Stabilizers</div>
+        <div class="ref-grid">
+          <div class="ref-card avoid">
+            <h3><i class="ti ti-x" style="font-size:14px"></i> Avoid</h3>
+            <ul>
+              <li>Gelatin — in gummies, marshmallows, Jell-O, puddings, some roasted nuts</li>
+              <li>Collagen — in protein powders, bone broths, supplements</li>
+            </ul>
+          </div>
+          <div class="ref-card caution">
+            <h3><i class="ti ti-alert-triangle" style="font-size:14px"></i> Use Caution</h3>
+            <ul>
+              <li>Carrageenan — seaweed-derived but may cross-react in highly sensitive individuals</li>
+            </ul>
+          </div>
+          <div class="ref-card safe">
+            <h3><i class="ti ti-check" style="font-size:14px"></i> Safe Alternatives</h3>
+            <ul>
+              <li>Agar-agar (use 1:1 for gelatin)</li>
+              <li>Pectin (for jams, jellies)</li>
+              <li>Arrowroot, cornstarch, tapioca starch</li>
+              <li>Dandies marshmallows (vegan, gelatin-free)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 4: Dairy -->
+      <div class="ref-section">
+        <div class="ref-section-title"><i class="ti ti-bottle"></i> Dairy &amp; Dairy Alternatives</div>
+        <div class="ref-grid">
+          <div class="ref-card avoid">
+            <h3><i class="ti ti-x" style="font-size:14px"></i> Avoid — Mammal Dairy</h3>
+            <ul>
+              <li>Cow's milk, goat's milk</li>
+              <li>Butter, cream, sour cream</li>
+              <li>Cheese, yogurt, ice cream</li>
+              <li>Whey &amp; casein (common in protein powders, baked goods)</li>
+              <li>Ghee (clarified butter)</li>
+              <li>Lactose</li>
+            </ul>
+          </div>
+          <div class="ref-card safe">
+            <h3><i class="ti ti-check" style="font-size:14px"></i> Safe Dairy Alternatives</h3>
+            <ul>
+              <li>Oat milk, almond milk, soy milk, rice milk</li>
+              <li>Coconut milk &amp; coconut cream</li>
+              <li>Coconut oil or avocado oil (for butter)</li>
+              <li>Vegan / plant-based cheeses</li>
+              <li>Coconut-based yogurt and ice cream</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 5: Hidden Additives -->
+      <div class="ref-section">
+        <div class="ref-section-title"><i class="ti ti-eye-off"></i> Hidden Additives in Packaged Foods</div>
+        <div class="ref-grid">
+          <div class="ref-card caution">
+            <h3><i class="ti ti-alert-triangle" style="font-size:14px"></i> Check the Source</h3>
+            <ul>
+              <li>Glycerin / Glycerol — plant-based OR animal-derived; check label</li>
+              <li>Magnesium Stearate — in pills &amp; supplements; occasionally from cow/pig fat</li>
+              <li>Mono- &amp; diglycerides — source varies by manufacturer</li>
+              <li>Rennet — traditional cheese-making uses animal stomach; look for "vegetable rennet"</li>
+              <li>Carmine / cochineal (red dye E120) — insect-derived, debated for AGS</li>
+              <li>"Natural flavors" — always contact manufacturer to verify source</li>
+              <li>Vitamin D3 — often derived from lanolin (sheep's wool)</li>
+            </ul>
+          </div>
+          <div class="ref-card avoid">
+            <h3><i class="ti ti-x" style="font-size:14px"></i> Always Avoid</h3>
+            <ul>
+              <li>Bone broth (from any mammal)</li>
+              <li>Animal-derived collagen peptides</li>
+              <li>Lard in canned/packaged foods (check refried beans, pie fillings)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 6: Non-Food Products -->
+      <div class="ref-section">
+        <div class="ref-section-title" style="color:#4a1c8a;border-bottom-color:rgba(120,60,180,0.2);">
+          <i class="ti ti-heart-rate-monitor"></i> Non-Food Products &amp; Medications
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:10px;">Alpha-gal can be present in non-food items. Always consult your doctor or pharmacist before taking new medications or supplements.</p>
+        <div class="nonfood-grid">
+          <div class="nonfood-card">
+            <h4><i class="ti ti-droplet" style="font-size:14px"></i> Glycerin in Personal Care</h4>
+            <p>Found in soaps, lotions, lip balms. Can be plant-based or animal-derived. Check with the manufacturer if source is not listed.</p>
+          </div>
+          <div class="nonfood-card">
+            <h4><i class="ti ti-pill" style="font-size:14px"></i> Magnesium Stearate in Supplements</h4>
+            <p>Used as a flowing agent in vitamins and medications. Often animal-derived. Ask your pharmacist for plant-based capsule alternatives.</p>
+          </div>
+          <div class="nonfood-card">
+            <h4><i class="ti ti-heart" style="font-size:14px"></i> Lanolin in Cosmetics</h4>
+            <p>A wax from sheep's wool. Found in lip balms, diaper rash creams, ointments, and moisturizers. Also hidden as Vitamin D3 in fortified foods.</p>
+          </div>
+          <div class="nonfood-card">
+            <h4><i class="ti ti-needle" style="font-size:14px"></i> Medications to Discuss With Your Doctor</h4>
+            <p>Gelatin-coated capsules, heparin, certain antivenoms, and some vaccines may contain gelatin or other mammalian excipients. Always inform your healthcare provider about your AGS diagnosis.</p>
+          </div>
+        </div>
+        <p style="font-size:12px;color:#4a1c8a;margin-top:10px;background:#f5f0fb;padding:7px 10px;border-radius:6px;border:1px solid rgba(120,60,180,0.15);">⚠️ This is general awareness information only — not medical advice. Always consult your doctor or pharmacist before changing or stopping any medication.</p>
+      </div>
+
+      <!-- SECTION 7: Safe Swaps -->
+      <div class="ref-section">
+        <div class="ref-section-title"><i class="ti ti-replace"></i> Quick Substitution Guide</div>
+        <div class="ref-grid">
+          <div class="ref-card safe">
+            <h3><i class="ti ti-check" style="font-size:14px"></i> Cooking &amp; Baking Swaps</h3>
+            <ul>
+              <li>Butter → coconut oil or avocado oil (1:1)</li>
+              <li>Lard → coconut oil or duck fat (1:1)</li>
+              <li>Beef/pork broth → chicken or vegetable broth (1:1)</li>
+              <li>Gelatin → agar-agar (1:1) or pectin</li>
+              <li>Dairy milk → oat, almond, or coconut milk (1:1)</li>
+              <li>Cream → full-fat coconut cream (1:1)</li>
+              <li>Marshmallows → Dandies brand (vegan)</li>
+              <li>Ghee → coconut oil (1:1)</li>
+              <li>Whey protein → plant-based protein powder</li>
+            </ul>
+          </div>
+          <div class="ref-card safe">
+            <h3><i class="ti ti-check" style="font-size:14px"></i> Pantry Staples to Keep On Hand</h3>
+            <ul>
+              <li>Coconut oil &amp; coconut cream</li>
+              <li>Avocado oil &amp; olive oil</li>
+              <li>Vegetable &amp; chicken broth (check labels)</li>
+              <li>Agar-agar powder</li>
+              <li>Arrowroot or cornstarch</li>
+              <li>Plant-based milk (oat, almond, soy)</li>
+              <li>Dandies vegan marshmallows</li>
+              <li>Nutritional yeast (cheese flavor)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -865,71 +669,229 @@
 <!-- FOOTER -->
 <footer>
   <p>
-    <strong>Alpha-Gal Safe Recipe Finder</strong> &bull; Created by <strong>Rachel Baldwin</strong> / <a href="https://rlbdesigns.com" target="_blank" rel="noopener">RLB Designs</a><br>
+    <strong>Alpha-Gal Safe Recipe Finder</strong> &bull; Created by <strong>Rachel Baldwin</strong> / <a href="https://www.rlbdesigns.com" target="_blank" rel="noopener">RLB Designs</a><br>
     🎁 This tool is a free bonus for buying any Cookbook by Rachel Baldwin / RLB Designs.<br>
-    <a href="https://rlbdesigns.com" target="_blank" rel="noopener">Browse all cookbooks at RLBDesigns.com →</a><br><br>
+    <a href="https://www.rlbdesigns.com" target="_blank" rel="noopener">Browse all cookbooks at RLBDesigns.com →</a><br><br>
     Always verify ingredients with your allergist. AGS sensitivity varies by individual.<br>
     Powered by <a href="https://anthropic.com" target="_blank" rel="noopener">Anthropic Claude AI</a> &bull; Built with care for the AGS community
   </p>
 </footer>
 
 <script>
-const SYSTEM_PROMPT = `You are an expert Alpha-Gal Syndrome (AGS) culinary safety advisor. Alpha-Gal Syndrome is an allergic reaction to galactose-alpha-1,3-galactose (alpha-gal), a sugar molecule found in the flesh and byproducts of most mammals (beef, pork, lamb, venison, rabbit, horse, etc.) and some mammal-derived products.
+/* ══════════════════════════════════════════════════════
+   INGREDIENT DATABASE — 150+ entries, no API needed
+══════════════════════════════════════════════════════ */
+const INGREDIENTS = [
+  // MEATS - AVOID
+  {name:"Beef",status:"avoid",category:"Meat",note:"All cuts and forms contain alpha-gal.",alt:"Chicken, turkey, or fish"},
+  {name:"Pork",status:"avoid",category:"Meat",note:"All cuts including ham, bacon, sausage.",alt:"Chicken sausage, turkey bacon"},
+  {name:"Lamb",status:"avoid",category:"Meat",note:"All lamb and mutton products.",alt:"Chicken or duck"},
+  {name:"Veal",status:"avoid",category:"Meat",note:"Young beef — contains alpha-gal.",alt:"Chicken breast"},
+  {name:"Venison",status:"avoid",category:"Meat",note:"Deer meat contains alpha-gal.",alt:"Duck or turkey"},
+  {name:"Bison",status:"avoid",category:"Meat",note:"Contains alpha-gal like beef.",alt:"Chicken or turkey"},
+  {name:"Rabbit",status:"avoid",category:"Meat",note:"Mammal meat — not safe.",alt:"Chicken thighs"},
+  {name:"Goat",status:"avoid",category:"Meat",note:"Mammal meat — contains alpha-gal.",alt:"Chicken or fish"},
+  {name:"Boar",status:"avoid",category:"Meat",note:"Wild pork — contains alpha-gal.",alt:"Turkey"},
+  {name:"Elk",status:"avoid",category:"Meat",note:"Mammal — contains alpha-gal.",alt:"Duck or chicken"},
+  {name:"Liver",status:"avoid",category:"Organ",note:"Mammal organ meat.",alt:"Chicken liver (check sensitivity)"},
+  {name:"Kidney",status:"avoid",category:"Organ",note:"Mammal organ meat.",alt:"Avoid or use plant protein"},
+  {name:"Heart",status:"avoid",category:"Organ",note:"Mammal organ meat.",alt:"Chicken heart (check sensitivity)"},
+  {name:"Sweetbreads",status:"avoid",category:"Organ",note:"Thymus/pancreas from mammals.",alt:"None — avoid entirely"},
+  {name:"Rocky Mountain Oysters",status:"avoid",category:"Organ",note:"Bull or sheep testicles — avoid.",alt:"None — avoid entirely"},
+  // POULTRY - SAFE
+  {name:"Chicken",status:"safe",category:"Poultry",note:"All cuts are safe for AGS.",alt:""},
+  {name:"Turkey",status:"safe",category:"Poultry",note:"All cuts including ground turkey.",alt:""},
+  {name:"Duck",status:"safe",category:"Poultry",note:"Including duck fat — a great lard substitute.",alt:""},
+  {name:"Goose",status:"safe",category:"Poultry",note:"Safe for AGS.",alt:""},
+  {name:"Quail",status:"safe",category:"Poultry",note:"Safe for AGS.",alt:""},
+  {name:"Duck Fat",status:"safe",category:"Fat",note:"Excellent safe substitute for lard.",alt:""},
+  {name:"Chicken Schmaltz",status:"safe",category:"Fat",note:"Rendered chicken fat — great cooking fat.",alt:""},
+  // SEAFOOD - SAFE
+  {name:"Salmon",status:"safe",category:"Fish",note:"All fish are safe for AGS.",alt:""},
+  {name:"Tuna",status:"safe",category:"Fish",note:"Safe for AGS.",alt:""},
+  {name:"Cod",status:"safe",category:"Fish",note:"Safe for AGS.",alt:""},
+  {name:"Tilapia",status:"safe",category:"Fish",note:"Safe for AGS.",alt:""},
+  {name:"Shrimp",status:"safe",category:"Seafood",note:"Safe for AGS. (*Check personal shellfish sensitivity.)",alt:""},
+  {name:"Crab",status:"safe",category:"Seafood",note:"Safe for AGS. (*Check personal shellfish sensitivity.)",alt:""},
+  {name:"Lobster",status:"safe",category:"Seafood",note:"Safe for AGS. (*Check personal shellfish sensitivity.)",alt:""},
+  {name:"Clams",status:"safe",category:"Seafood",note:"Safe for AGS. (*Check personal shellfish sensitivity.)",alt:""},
+  {name:"Scallops",status:"safe",category:"Seafood",note:"Safe for AGS. (*Check personal shellfish sensitivity.)",alt:""},
+  {name:"Anchovies",status:"safe",category:"Fish",note:"Fish — safe for AGS.",alt:""},
+  {name:"Fish Sauce",status:"safe",category:"Condiment",note:"Made from fish — safe for AGS.",alt:""},
+  // EGGS
+  {name:"Eggs",status:"safe",category:"Eggs",note:"Generally safe for AGS. (*Some individuals develop sensitivity — verify with allergist.)",alt:""},
+  // FATS - AVOID
+  {name:"Lard",status:"avoid",category:"Fat",note:"Rendered pork fat. Hidden in refried beans, pie crusts, some tortillas and baked goods.",alt:"Coconut oil or duck fat (1:1)"},
+  {name:"Tallow",status:"avoid",category:"Fat",note:"Rendered beef fat.",alt:"Avocado oil or coconut oil (1:1)"},
+  {name:"Suet",status:"avoid",category:"Fat",note:"Hard beef or mutton fat. Often in British recipes.",alt:"Coconut oil or vegetable shortening"},
+  {name:"Beef Tallow",status:"avoid",category:"Fat",note:"Used in some fast food frying and packaged foods.",alt:"Avocado oil"},
+  // FATS - SAFE
+  {name:"Coconut Oil",status:"safe",category:"Fat",note:"Excellent all-purpose cooking fat. Neutral or mild coconut flavor.",alt:""},
+  {name:"Avocado Oil",status:"safe",category:"Fat",note:"High smoke point — great for frying and roasting.",alt:""},
+  {name:"Olive Oil",status:"safe",category:"Fat",note:"Safe for AGS — great for sautéing and dressings.",alt:""},
+  {name:"Vegetable Oil",status:"safe",category:"Fat",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Canola Oil",status:"safe",category:"Fat",note:"Plant-based — safe for AGS.",alt:""},
+  // BROTHS & STOCKS
+  {name:"Beef Broth",status:"avoid",category:"Broth",note:"Made from mammal bones/meat.",alt:"Chicken broth or vegetable broth (1:1)"},
+  {name:"Beef Stock",status:"avoid",category:"Broth",note:"Concentrated mammal broth.",alt:"Chicken stock or vegetable stock"},
+  {name:"Bone Broth (beef/pork)",status:"avoid",category:"Broth",note:"Highly concentrated alpha-gal.",alt:"Chicken bone broth or vegetable broth"},
+  {name:"Pork Broth",status:"avoid",category:"Broth",note:"Mammal-derived.",alt:"Chicken broth"},
+  {name:"Chicken Broth",status:"safe",category:"Broth",note:"Safe for AGS — check labels for added mammal ingredients.",alt:""},
+  {name:"Vegetable Broth",status:"safe",category:"Broth",note:"Fully plant-based — safe for AGS.",alt:""},
+  {name:"Chicken Stock",status:"safe",category:"Broth",note:"Safe for AGS.",alt:""},
+  // GELATIN & THICKENERS
+  {name:"Gelatin",status:"avoid",category:"Thickener",note:"Made from mammal bones and connective tissue. In Jell-O, gummies, marshmallows, some puddings.",alt:"Agar-agar (1:1) or pectin"},
+  {name:"Collagen",status:"avoid",category:"Supplement",note:"In protein powders, bone broth products, supplements.",alt:"Plant-based protein powder"},
+  {name:"Agar-Agar",status:"safe",category:"Thickener",note:"Seaweed-derived gelatin substitute. Use 1:1 for gelatin.",alt:""},
+  {name:"Pectin",status:"safe",category:"Thickener",note:"Fruit-derived. Great for jams, jellies, and some desserts.",alt:""},
+  {name:"Cornstarch",status:"safe",category:"Thickener",note:"Plant-based thickener — safe for AGS.",alt:""},
+  {name:"Arrowroot",status:"safe",category:"Thickener",note:"Plant-based thickener — safe for AGS.",alt:""},
+  {name:"Tapioca Starch",status:"safe",category:"Thickener",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Carrageenan",status:"caution",category:"Thickener",note:"Seaweed extract — generally safe but may cause reactions in highly sensitive AGS individuals.",alt:"Agar-agar or cornstarch"},
+  // DAIRY - AVOID
+  {name:"Butter",status:"avoid",category:"Dairy",note:"Cow's milk fat — contains alpha-gal.",alt:"Coconut oil or avocado oil (1:1)"},
+  {name:"Milk",status:"avoid",category:"Dairy",note:"All mammal milk contains alpha-gal.",alt:"Oat milk, almond milk, or coconut milk"},
+  {name:"Cream",status:"avoid",category:"Dairy",note:"Heavy cream, half-and-half, sour cream.",alt:"Full-fat coconut cream (1:1)"},
+  {name:"Cheese",status:"avoid",category:"Dairy",note:"All mammal-milk cheeses.",alt:"Plant-based / vegan cheese"},
+  {name:"Yogurt",status:"avoid",category:"Dairy",note:"Mammal dairy.",alt:"Coconut-based yogurt"},
+  {name:"Ice Cream",status:"avoid",category:"Dairy",note:"Mammal dairy base.",alt:"Coconut milk ice cream"},
+  {name:"Ghee",status:"avoid",category:"Dairy",note:"Clarified butter — still contains alpha-gal.",alt:"Coconut oil (1:1)"},
+  {name:"Whey",status:"avoid",category:"Dairy",note:"Hidden in protein powders, baked goods, processed snacks.",alt:"Plant-based protein or oat flour"},
+  {name:"Casein",status:"avoid",category:"Dairy",note:"Milk protein — hidden in many processed foods.",alt:"Plant-based alternatives"},
+  {name:"Lactose",status:"avoid",category:"Dairy",note:"Milk sugar from mammals.",alt:"Plant-based milks"},
+  // DAIRY ALTERNATIVES - SAFE
+  {name:"Oat Milk",status:"safe",category:"Dairy Alt",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Almond Milk",status:"safe",category:"Dairy Alt",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Coconut Milk",status:"safe",category:"Dairy Alt",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Coconut Cream",status:"safe",category:"Dairy Alt",note:"Rich, full-fat — perfect cream substitute.",alt:""},
+  {name:"Soy Milk",status:"safe",category:"Dairy Alt",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Rice Milk",status:"safe",category:"Dairy Alt",note:"Plant-based — safe for AGS.",alt:""},
+  // MARSHMALLOWS
+  {name:"Marshmallows",status:"avoid",category:"Confection",note:"Most contain gelatin from pigs or cattle.",alt:"Dandies brand vegan marshmallows"},
+  {name:"Dandies Marshmallows",status:"safe",category:"Confection",note:"Vegan, gelatin-free marshmallows. Available in most stores.",alt:""},
+  {name:"Gummy Candy",status:"avoid",category:"Confection",note:"Almost always contains gelatin.",alt:"Pectin-based gummies or fruit snacks"},
+  {name:"Jell-O",status:"avoid",category:"Confection",note:"Contains gelatin.",alt:"Agar-agar based desserts"},
+  // ADDITIVES - CAUTION
+  {name:"Glycerin / Glycerol",status:"caution",category:"Additive",note:"In foods, soaps, lotions — can be plant-based OR animal-derived. Contact manufacturer.",alt:"Look for 'vegetable glycerin' on label"},
+  {name:"Magnesium Stearate",status:"caution",category:"Additive",note:"Flowing agent in pills and supplements. Often animal-derived. Ask for plant-based capsules.",alt:"Look for plant-based alternatives"},
+  {name:"Mono- and Diglycerides",status:"caution",category:"Additive",note:"Source varies by manufacturer — can be animal or plant-derived.",alt:"Contact manufacturer to verify source"},
+  {name:"Natural Flavors",status:"caution",category:"Additive",note:"Vague term — can include mammal-derived ingredients. Always contact manufacturer.",alt:"Cook from scratch with whole ingredients"},
+  {name:"Carmine / Cochineal",status:"caution",category:"Additive",note:"Insect-derived red dye (E120). Not mammal-derived, but debated among AGS community.",alt:"Beet juice or plant-based red dyes"},
+  {name:"Lanolin",status:"caution",category:"Additive",note:"Sheep's wool wax. Found in lip balms, lotions, ointments, and as Vitamin D3 in fortified foods.",alt:"Plant-based moisturizers; look for vegan Vitamin D3"},
+  {name:"Rennet",status:"caution",category:"Additive",note:"Traditional cheese-making uses animal stomach rennet.",alt:"Look for 'vegetable rennet' or vegan cheese"},
+  {name:"Vitamin D3",status:"caution",category:"Additive",note:"Often derived from lanolin (sheep's wool). Found in fortified milk, cereals, supplements.",alt:"Look for vegan D3 from lichen"},
+  // CONDIMENTS
+  {name:"Worcestershire Sauce",status:"caution",category:"Condiment",note:"Most brands contain anchovies (fish — safe), but some formulations vary. Check label.",alt:"Coconut aminos or soy sauce"},
+  {name:"Soy Sauce",status:"safe",category:"Condiment",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Coconut Aminos",status:"safe",category:"Condiment",note:"Great soy sauce alternative — safe for AGS.",alt:""},
+  {name:"Hot Sauce",status:"safe",category:"Condiment",note:"Most are plant-based — check labels for hidden additives.",alt:""},
+  {name:"Ketchup",status:"safe",category:"Condiment",note:"Plant-based — generally safe.",alt:""},
+  {name:"Mustard",status:"safe",category:"Condiment",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Mayonnaise",status:"caution",category:"Condiment",note:"Egg-based — eggs are generally safe, but check for any dairy additives.",alt:"Vegan mayo (egg-free) if also sensitive to eggs"},
+  {name:"Gravy",status:"avoid",category:"Condiment",note:"Almost always made from mammal drippings or stock.",alt:"Mushroom gravy or chicken gravy made with chicken stock"},
+  // PRODUCE & PANTRY
+  {name:"All Fruits",status:"safe",category:"Produce",note:"All fruits are safe for AGS.",alt:""},
+  {name:"All Vegetables",status:"safe",category:"Produce",note:"All vegetables are safe for AGS.",alt:""},
+  {name:"All Grains",status:"safe",category:"Pantry",note:"Rice, oats, wheat, quinoa, barley, etc. — all safe.",alt:""},
+  {name:"Legumes",status:"safe",category:"Pantry",note:"Beans, lentils, chickpeas, peas — all safe. Watch for lard in canned refried beans.",alt:""},
+  {name:"Nuts & Seeds",status:"safe",category:"Pantry",note:"All nuts and seeds are safe.",alt:""},
+  {name:"Vinegar",status:"safe",category:"Pantry",note:"All types — safe for AGS.",alt:""},
+  {name:"Most Spices",status:"safe",category:"Pantry",note:"Pure spices are safe. Watch for spice blends with hidden additives.",alt:""},
+  {name:"Maple Syrup",status:"safe",category:"Pantry",note:"Plant-based sweetener — safe for AGS.",alt:""},
+  {name:"Honey",status:"safe",category:"Pantry",note:"Not mammal-derived — safe for AGS.",alt:""},
+  {name:"Sugar",status:"safe",category:"Pantry",note:"Safe for AGS.",alt:""},
+  {name:"Nutritional Yeast",status:"safe",category:"Pantry",note:"Great cheese-flavor substitute — safe for AGS.",alt:""},
+  // REFRIED BEANS
+  {name:"Refried Beans (canned)",status:"caution",category:"Pantry",note:"Many traditional brands contain lard. Always check the label.",alt:"Amy's or vegetarian brands, or make from scratch"},
+  {name:"Tortillas (flour)",status:"caution",category:"Pantry",note:"Some brands use lard. Check the ingredient list.",alt:"Look for 'vegetable shortening' or make your own"},
+  // NON-FOOD
+  {name:"Heparin",status:"caution",category:"Medication",note:"Blood thinner derived from pig intestines. Discuss alternatives with your doctor.",alt:"Consult your physician"},
+  {name:"Gelatin Capsules",status:"caution",category:"Medication",note:"Many vitamin and medication capsules use gelatin. Ask your pharmacist for plant-based capsule options.",alt:"Vegetable capsule (HPMC) alternatives"},
+];
 
-SAFE for AGS: all poultry (chicken, turkey, duck), fish, seafood, plant foods, eggs, most plant oils, vinegar, most spices, all fruits/vegetables/grains/legumes, plant-based milks, coconut products, agar-agar, pectin.
+let currentFilter = 'all';
+let currentSearch = '';
 
-NOT SAFE for AGS: beef, pork, lamb, venison, rabbit, bison, and any other mammal meat; mammal fats (lard, suet, tallow); dairy (milk, cheese, butter, cream, whey, casein, lactose from mammals); gelatin; bone broth from mammals; rennet from animal stomachs; most commercial marshmallows.
-
-USE CAUTION: carmine/cochineal (debated); "natural flavors" (may be mammal-derived); mono- and diglycerides (source varies); some medications and vitamins (gelatin capsules); some Worcestershire sauce brands.
-
-SAFE SUBSTITUTIONS:
-- Butter → coconut oil, avocado oil, or olive oil
-- Lard → coconut oil, chicken schmaltz, or duck fat
-- Beef/pork broth → chicken broth or vegetable broth
-- Gelatin → agar-agar (same ratio) or pectin
-- Dairy milk → oat milk, almond milk, or coconut milk
-- Cream → full-fat coconut cream
-- Regular marshmallows → Dandies brand (vegan, gelatin-free)
-
-Always:
-- Give a clear SAFE / NOT SAFE / USE CAUTION verdict for each item when relevant
-- Explain WHY concisely
-- Suggest a specific, practical safe alternative when something isn't safe
-- Be warm, empowering, and practical — this community deserves delicious, safe food
-- Note that individual sensitivities vary and medical advice should be sought`;
-
-let apiKey = localStorage.getItem('ags_api_key') || '';
-updateKeyStatus();
-
-function saveKey() {
-  const val = document.getElementById('api-key-input').value.trim();
-  if (!val) return;
-  apiKey = val;
-  localStorage.setItem('ags_api_key', val);
-  document.getElementById('api-key-input').value = '';
-  updateKeyStatus();
-}
-
-function updateKeyStatus() {
-  const el = document.getElementById('key-status');
-  if (apiKey) {
-    el.className = 'key-status set';
-    el.innerHTML = '<i class="ti ti-circle-check" style="font-size:14px"></i> API key saved — ready to use';
-  } else {
-    el.className = 'key-status unset';
-    el.innerHTML = '<i class="ti ti-circle-x" style="font-size:14px"></i> No API key set — enter one above to use the AI tools';
-  }
-}
-
-function switchTab(name) {
-  const tabs = ['check','adapt','sub','ask','ref'];
-  document.querySelectorAll('.tab-btn').forEach((b, i) => {
-    b.classList.toggle('active', tabs[i] === name);
-    b.setAttribute('aria-selected', tabs[i] === name);
+function renderIngredients() {
+  const grid = document.getElementById('ing-grid');
+  const count = document.getElementById('ing-count');
+  const q = currentSearch.toLowerCase().trim();
+  let filtered = INGREDIENTS.filter(i => {
+    const matchSearch = !q || i.name.toLowerCase().includes(q) || i.category.toLowerCase().includes(q) || i.note.toLowerCase().includes(q);
+    const matchFilter = currentFilter === 'all' || i.status === currentFilter;
+    return matchSearch && matchFilter;
   });
+  count.textContent = filtered.length + ' ingredient' + (filtered.length !== 1 ? 's' : '') + ' found';
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="no-results"><i class="ti ti-search-off" style="font-size:32px;display:block;margin-bottom:8px;opacity:0.4"></i>No ingredients found. Try a different search term.</div>';
+    return;
+  }
+  grid.innerHTML = filtered.map(i => `
+    <div class="ing-card ${i.status}">
+      <div class="ing-card-header">
+        <span class="ing-badge">${i.status === 'safe' ? '✓ Safe' : i.status === 'avoid' ? '✗ Avoid' : '⚠ Caution'}</span>
+        <span class="ing-name">${i.name}</span>
+      </div>
+      <div class="ing-note">${i.note}</div>
+      ${i.alt ? `<div class="ing-alt">→ Try instead: ${i.alt}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+function searchIngredients() {
+  currentSearch = document.getElementById('ing-search').value;
+  renderIngredients();
+}
+
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active','active-avoid','active-caution'));
+  btn.classList.add('active');
+  renderIngredients();
+}
+
+/* ══════════════════════════════════════════════════════
+   TAB NAVIGATION
+══════════════════════════════════════════════════════ */
+function switchTab(name) {
+  const tabs = ['search','adapt','sub','ask','ref'];
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', tabs[i] === name));
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
 }
+
+function switchAskTab(name) {
+  document.querySelectorAll('.ask-subtab').forEach(b => b.classList.remove('active'));
+  event.target.closest('.ask-subtab').classList.add('active');
+  document.querySelectorAll('.ask-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('ask-' + name).classList.add('active');
+}
+
+/* ══════════════════════════════════════════════════════
+   AI — CLOUDFLARE WORKER ENDPOINT
+   Replace WORKER_URL with your Cloudflare Worker URL
+   once it is deployed.
+══════════════════════════════════════════════════════ */
+const WORKER_URL = 'REPLACE_WITH_YOUR_CLOUDFLARE_WORKER_URL';
+
+const SYSTEM_PROMPT = `You are an expert Alpha-Gal Syndrome (AGS) culinary and safety advisor. AGS is an allergic reaction to galactose-alpha-1,3-galactose (alpha-gal), a sugar found in most mammals.
+
+SAFE: all poultry (chicken, turkey, duck), fish, seafood, plant foods, eggs*, coconut products, plant-based milks, agar-agar, pectin.
+*Some AGS individuals are also sensitive to eggs and/or shellfish — always note this caveat.
+
+NOT SAFE: beef, pork, lamb, venison, rabbit, bison, all mammal meats; lard, tallow, suet; all mammal dairy; gelatin; bone broth from mammals; rennet; most marshmallows.
+
+USE CAUTION: carmine; "natural flavors"; glycerin (check source); magnesium stearate; mono/diglycerides; lanolin; Vitamin D3 from lanolin; rennet; some medications/vaccines containing gelatin or mammalian excipients; heparin.
+
+Non-food items to watch: glycerin in cosmetics, lanolin in lotions/lip balms, gelatin capsules in supplements/medications, heparin, some vaccines.
+
+Always:
+- Give a clear SAFE / NOT SAFE / USE CAUTION verdict
+- Explain WHY concisely
+- Suggest a specific safe alternative when something isn't safe
+- Remind that individual sensitivities vary and some AGS patients react to eggs/shellfish too
+- For medications/medical products, always advise consulting a doctor or pharmacist
+- Be warm, practical, and empowering`;
 
 function setLoading(prefix, on) {
   document.getElementById(prefix + '-loading').classList.toggle('visible', on);
@@ -960,60 +922,31 @@ function copyResult(id) {
   });
 }
 
-async function callClaude(userMsg, prefix) {
-  if (!apiKey) {
-    showErr(prefix, 'Please enter and save your Anthropic API key at the top of the page.');
+async function callAI(userMsg, prefix) {
+  if (WORKER_URL === 'REPLACE_WITH_YOUR_CLOUDFLARE_WORKER_URL') {
+    showResult(prefix, '⚙️ AI features coming soon!\n\nIn the meantime, use the Search Ingredients tab or Safe Reference tab — no setup needed, instant results for 150+ ingredients.\n\nThe AI-powered recipe adaptation and advisor features will be live shortly.');
     return;
   }
   setLoading(prefix, true);
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch(WORKER_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: SYSTEM_PROMPT,
-        messages: [{ role: 'user', content: userMsg }]
-      })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ system: SYSTEM_PROMPT, message: userMsg })
     });
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.error?.message || 'API error ' + res.status);
-    }
+    if (!res.ok) throw new Error('Request failed: ' + res.status);
     const data = await res.json();
-    const text = data.content?.filter(b => b.type === 'text').map(b => b.text).join('\n') || 'No response received.';
-    showResult(prefix, text);
+    showResult(prefix, data.content || data.text || JSON.stringify(data));
   } catch(e) {
-    showResult(prefix, 'Error: ' + (e.message || 'Something went wrong. Please check your API key and try again.'));
+    showResult(prefix, 'Something went wrong. Please try again in a moment.\n\nError: ' + (e.message || 'Unknown error'));
   }
   setLoading(prefix, false);
 }
 
-function quickCheck(ingredient) {
-  document.getElementById('check-input').value = ingredient;
-  runCheck();
-}
-
-function setAsk(q) {
-  document.getElementById('ask-input').value = q;
-}
-
-function runCheck() {
-  const val = document.getElementById('check-input').value.trim();
-  if (!val) { showErr('check', 'Please enter at least one ingredient.'); return; }
-  callClaude(`Please check the following ingredients for Alpha-Gal Syndrome (AGS) safety. For each one, clearly state SAFE, NOT SAFE, or USE CAUTION, then briefly explain why. For anything not safe, suggest a specific AGS-safe substitute.\n\nIngredients: ${val}`, 'check');
-}
-
 function runAdapt() {
   const val = document.getElementById('adapt-input').value.trim();
-  if (!val) { showErr('adapt', 'Please paste a recipe first.'); return; }
-  callClaude(`Please adapt this recipe to be 100% Alpha-Gal Syndrome (AGS) safe. For each mammal-derived ingredient, explain the concern briefly, then provide the exact safe substitute and quantity. Finally, rewrite the complete ingredient list with all substitutions in place.\n\nRecipe:\n${val}`, 'adapt');
+  if (!val) { showErr('adapt', 'Please paste a recipe to adapt.'); return; }
+  callAI(`Please adapt this recipe to be 100% Alpha-Gal Syndrome safe. Identify every mammal-derived ingredient, explain the concern briefly, provide an exact safe substitute with quantity, then rewrite the full ingredient list with substitutions in place.\n\nRecipe:\n${val}`, 'adapt');
 }
 
 function runSub() {
@@ -1021,23 +954,21 @@ function runSub() {
   if (!from) { showErr('sub', 'Please enter an ingredient to substitute.'); return; }
   const ctx = document.getElementById('sub-context').value.trim();
   const msg = ctx
-    ? `I need to substitute "${from}" in a ${ctx} and I have Alpha-Gal Syndrome. Give me 2–4 AGS-safe alternatives with specific ratios, how each performs differently, and any tips for success.`
-    : `I need to substitute "${from}" and I have Alpha-Gal Syndrome. Give me 2–4 AGS-safe alternatives with specific ratios and practical notes on flavor and texture differences.`;
-  callClaude(msg, 'sub');
+    ? `I need to substitute "${from}" in a ${ctx} for Alpha-Gal Syndrome. Give me 2–4 safe alternatives with specific ratios and tips.`
+    : `I need to substitute "${from}" for Alpha-Gal Syndrome. Give me 2–4 safe alternatives with ratios and notes on flavor/texture differences.`;
+  callAI(msg, 'sub');
 }
+
+function setAsk(q) { document.getElementById('ask-input').value = q; }
 
 function runAsk() {
   const val = document.getElementById('ask-input').value.trim();
   if (!val) { showErr('ask', 'Please type a question first.'); return; }
-  callClaude(val, 'ask');
+  callAI(val, 'ask');
 }
 
-document.getElementById('check-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter') { e.preventDefault(); runCheck(); }
-});
-document.getElementById('api-key-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter') saveKey();
-});
+// Init ingredient list on load
+renderIngredients();
 </script>
 </body>
 </html>
