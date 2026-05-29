@@ -872,7 +872,7 @@ function switchAskTab(name) {
    Replace WORKER_URL with your Cloudflare Worker URL
    once it is deployed.
 ══════════════════════════════════════════════════════ */
-const WORKER_URL = 'REPLACE_WITH_YOUR_CLOUDFLARE_WORKER_URL';
+const WORKER_URL = 'https://agsrecipesearch.4gammieskids.workers.dev';
 
 const SYSTEM_PROMPT = `You are an expert Alpha-Gal Syndrome (AGS) culinary and safety advisor. AGS is an allergic reaction to galactose-alpha-1,3-galactose (alpha-gal), a sugar found in most mammals.
 
@@ -923,10 +923,6 @@ function copyResult(id) {
 }
 
 async function callAI(userMsg, prefix) {
-  if (WORKER_URL === 'REPLACE_WITH_YOUR_CLOUDFLARE_WORKER_URL') {
-    showResult(prefix, '⚙️ AI features coming soon!\n\nIn the meantime, use the Search Ingredients tab or Safe Reference tab — no setup needed, instant results for 150+ ingredients.\n\nThe AI-powered recipe adaptation and advisor features will be live shortly.');
-    return;
-  }
   setLoading(prefix, true);
   try {
     const res = await fetch(WORKER_URL, {
@@ -936,7 +932,7 @@ async function callAI(userMsg, prefix) {
     });
     if (!res.ok) throw new Error('Request failed: ' + res.status);
     const data = await res.json();
-    showResult(prefix, data.content || data.text || JSON.stringify(data));
+    showResult(prefix, data.content || data.text || 'No response received.');
   } catch(e) {
     showResult(prefix, 'Something went wrong. Please try again in a moment.\n\nError: ' + (e.message || 'Unknown error'));
   }
