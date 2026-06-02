@@ -266,7 +266,7 @@
 
   <!-- TABS NAV -->
   <div class="tabs-nav" role="tablist">
-    <button class="tab-btn active" onclick="switchTab('search')"><i class="ti ti-search"></i><span>Search Ingredients</span></button>
+    <button class="tab-btn active" onclick="switchTab('search')"><i class="ti ti-search"></i><span>Search All</span></button>
     <button class="tab-btn" onclick="switchTab('adapt')"><i class="ti ti-wand"></i><span>Adapt a Recipe</span></button>
     <button class="tab-btn" onclick="switchTab('sub')"><i class="ti ti-arrows-exchange"></i><span>Substitutions</span></button>
     <button class="tab-btn" onclick="switchTab('ask')"><i class="ti ti-message-circle"></i><span>Ask Anything</span></button>
@@ -278,8 +278,8 @@
   ══════════════════════════════════════════════ -->
   <div id="tab-search" class="tab-panel active">
     <div class="card">
-      <div class="card-title">Ingredient Safety Search</div>
-      <div class="card-desc">Search our database of 150+ ingredients — instantly see if each is safe, unsafe, or requires caution for Alpha-Gal Syndrome. No account needed.</div>
+      <div class="card-title">Ingredient &amp; Product Safety Search</div>
+      <div class="card-desc">Search our database of 300+ ingredients AND common cooking products — flours, pastas, cereals, chips, deli meats, sauces, spice blends, alcohol, food dyes, and more. Instantly see if each is safe, unsafe, or requires caution for AGS. No account needed.</div>
 
       <div class="search-wrap">
         <i class="ti ti-search"></i>
@@ -287,10 +287,29 @@
       </div>
 
       <div class="filter-row">
-        <button class="filter-chip active" onclick="setFilter('all', this)">All</button>
-        <button class="filter-chip" onclick="setFilter('safe', this)"><i class="ti ti-check" style="font-size:12px;vertical-align:-1px"></i> Safe</button>
-        <button class="filter-chip" onclick="setFilter('avoid', this)"><i class="ti ti-x" style="font-size:12px;vertical-align:-1px"></i> Avoid</button>
-        <button class="filter-chip" onclick="setFilter('caution', this)"><i class="ti ti-alert-triangle" style="font-size:12px;vertical-align:-1px"></i> Use Caution</button>
+        <button class="filter-chip active" onclick="setFilter('all','status',this)">All</button>
+        <button class="filter-chip" onclick="setFilter('safe','status',this)"><i class="ti ti-check" style="font-size:12px;vertical-align:-1px"></i> Safe</button>
+        <button class="filter-chip" onclick="setFilter('avoid','status',this)"><i class="ti ti-x" style="font-size:12px;vertical-align:-1px"></i> Avoid</button>
+        <button class="filter-chip" onclick="setFilter('caution','status',this)"><i class="ti ti-alert-triangle" style="font-size:12px;vertical-align:-1px"></i> Use Caution</button>
+      </div>
+      <div class="filter-row" style="margin-top:-4px;">
+        <span style="font-size:11px;color:var(--text-faint);padding:5px 2px;white-space:nowrap;">Filter by type:</span>
+        <button class="filter-chip active-cat" onclick="setFilter('all','category',this)" style="font-size:11.5px;padding:4px 10px;">All Types</button>
+        <button class="filter-chip" onclick="setFilter('Flour','category',this)" style="font-size:11.5px;padding:4px 10px;">Flour</button>
+        <button class="filter-chip" onclick="setFilter('Pasta','category',this)" style="font-size:11.5px;padding:4px 10px;">Pasta</button>
+        <button class="filter-chip" onclick="setFilter('Pasta Sauce','category',this)" style="font-size:11.5px;padding:4px 10px;">Pasta Sauces</button>
+        <button class="filter-chip" onclick="setFilter('Deli Meat','category',this)" style="font-size:11.5px;padding:4px 10px;">Deli Meats</button>
+        <button class="filter-chip" onclick="setFilter('Cereal','category',this)" style="font-size:11.5px;padding:4px 10px;">Cereals</button>
+        <button class="filter-chip" onclick="setFilter('Snack','category',this)" style="font-size:11.5px;padding:4px 10px;">Snacks/Chips</button>
+        <button class="filter-chip" onclick="setFilter('Sauce','category',this)" style="font-size:11.5px;padding:4px 10px;">Sauces</button>
+        <button class="filter-chip" onclick="setFilter('Spice Blend','category',this)" style="font-size:11.5px;padding:4px 10px;">Spice Blends</button>
+        <button class="filter-chip" onclick="setFilter('Alcohol','category',this)" style="font-size:11.5px;padding:4px 10px;">Alcohol</button>
+        <button class="filter-chip" onclick="setFilter('Food Dye','category',this)" style="font-size:11.5px;padding:4px 10px;">Food Dyes</button>
+        <button class="filter-chip" onclick="setFilter('Plant-Based','category',this)" style="font-size:11.5px;padding:4px 10px;">Plant-Based</button>
+        <button class="filter-chip" onclick="setFilter('Bread','category',this)" style="font-size:11.5px;padding:4px 10px;">Breads</button>
+        <button class="filter-chip" onclick="setFilter('Baking','category',this)" style="font-size:11.5px;padding:4px 10px;">Baking</button>
+        <button class="filter-chip" onclick="setFilter('Meat','category',this)" style="font-size:11.5px;padding:4px 10px;">Meats</button>
+        <button class="filter-chip" onclick="setFilter('Medication','category',this)" style="font-size:11.5px;padding:4px 10px;">Medications</button>
       </div>
 
       <div class="ing-results visible" id="ing-results">
@@ -457,6 +476,7 @@
 
       <!-- SECTION 1: Meats & Proteins -->
       <div class="ref-section">
+        <p style="font-size:13px;color:var(--warm-dark);margin-bottom:12px;background:var(--warm-light);padding:9px 12px;border-radius:8px;border:1px solid rgba(186,117,23,0.25);display:flex;align-items:flex-start;gap:8px;"><i class="ti ti-alert-triangle" style="font-size:15px;flex-shrink:0;margin-top:1px;"></i><span>Some AGS individuals are also sensitive to shellfish and/or eggs. Always verify with your allergist before using any product you are unsure about.</span></p>
         <div class="ref-section-title"><i class="ti ti-meat"></i> Meats, Proteins &amp; Organs</div>
         <div class="ref-grid">
           <div class="ref-card avoid">
@@ -473,13 +493,13 @@
             <h3><i class="ti ti-check" style="font-size:14px"></i> Always Safe — Poultry &amp; Seafood</h3>
             <ul>
               <li>Chicken, turkey, duck, goose, quail</li>
+              <li>Emu &amp; ostrich (ratite birds — safe for AGS)</li>
               <li>All fish (salmon, tuna, cod, tilapia…)</li>
               <li>All shellfish (shrimp, crab, lobster, clams)*</li>
               <li>Eggs (chicken, duck, quail)*</li>
             </ul>
           </div>
         </div>
-        <p style="font-size:12px;color:var(--warm-dark);margin-top:8px;background:var(--warm-light);padding:7px 10px;border-radius:6px;">* Some AGS individuals are also sensitive to shellfish and/or eggs. Always verify with your allergist.</p>
       </div>
 
       <!-- SECTION 2: Fats & Broths -->
@@ -643,6 +663,8 @@
               <li>Marshmallows → Dandies brand (vegan)</li>
               <li>Ghee → coconut oil (1:1)</li>
               <li>Whey protein → plant-based protein powder</li>
+              <li>Cheese → nutritional yeast or vegan cheese</li>
+              <li>Sour cream → coconut cream + lemon juice</li>
             </ul>
           </div>
           <div class="ref-card safe">
@@ -658,6 +680,16 @@
               <li>Nutritional yeast (cheese flavor)</li>
             </ul>
           </div>
+        </div>
+        <div style="margin-top:14px;background:#f0f7ff;border:1px solid rgba(30,100,200,0.18);border-radius:10px;padding:14px 16px;">
+          <p style="font-size:13px;font-weight:600;color:#1a3a6e;margin-bottom:8px;"><i class="ti ti-world" style="font-size:15px;vertical-align:-2px;margin-right:5px;"></i>Research More — Trusted AGS Resources</p>
+          <p style="font-size:12.5px;color:#2a4a80;margin-bottom:8px;">For extensive ingredient lists and up-to-date AGS safety information, visit these trusted sources:</p>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:5px;">
+            <li><a href="https://alphagalinformation.org" target="_blank" rel="noopener" style="font-size:13px;color:#1a5cb8;text-decoration:none;display:flex;align-items:center;gap:6px;"><i class="ti ti-external-link" style="font-size:13px;"></i>alphagalinformation.org — Community AGS information hub</a></li>
+            <li><a href="https://alphagaldocs.org/" target="_blank" rel="noopener" style="font-size:13px;color:#1a5cb8;text-decoration:none;display:flex;align-items:center;gap:6px;"><i class="ti ti-external-link" style="font-size:13px;"></i>alphagaldocs.org — AGS clinical documentation &amp; research</a></li>
+            <li><a href="https://www.cdc.gov/alpha-gal-syndrome/data-research/products-containing-alpha-gal/index.html" target="_blank" rel="noopener" style="font-size:13px;color:#1a5cb8;text-decoration:none;display:flex;align-items:center;gap:6px;"><i class="ti ti-external-link" style="font-size:13px;"></i>CDC.gov — Products containing alpha-gal (official list)</a></li>
+            <li><a href="https://extension.missouri.edu/publications/n1353" target="_blank" rel="noopener" style="font-size:13px;color:#1a5cb8;text-decoration:none;display:flex;align-items:center;gap:6px;"><i class="ti ti-external-link" style="font-size:13px;"></i>University of Missouri Extension — AGS food guidance</a></li>
+          </ul>
         </div>
       </div>
 
@@ -879,9 +911,224 @@ const INGREDIENTS = [
   // NON-FOOD
   {name:"Heparin",status:"caution",category:"Medication",note:"Blood thinner derived from pig intestines. Discuss alternatives with your doctor.",alt:"Consult your physician"},
   {name:"Gelatin Capsules",status:"caution",category:"Medication",note:"Many vitamin and medication capsules use gelatin. Ask your pharmacist for plant-based capsule options.",alt:"Vegetable capsule (HPMC) alternatives"},
+
+  // FLOURS
+  {name:"All-Purpose Flour",status:"safe",category:"Flour",note:"Wheat-based — plant-derived and safe for AGS.",alt:""},
+  {name:"Bread Flour",status:"safe",category:"Flour",note:"High-protein wheat flour — safe for AGS.",alt:""},
+  {name:"Cake Flour",status:"safe",category:"Flour",note:"Low-protein wheat flour — safe for AGS.",alt:""},
+  {name:"Self-Rising Flour",status:"safe",category:"Flour",note:"Wheat flour with baking powder added — safe for AGS.",alt:""},
+  {name:"Whole Wheat Flour",status:"safe",category:"Flour",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Almond Flour",status:"safe",category:"Flour",note:"Nut-based — safe for AGS.",alt:""},
+  {name:"Coconut Flour",status:"safe",category:"Flour",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Rice Flour",status:"safe",category:"Flour",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Oat Flour",status:"safe",category:"Flour",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Cassava Flour",status:"safe",category:"Flour",note:"Plant-based — safe for AGS. Great gluten-free option.",alt:""},
+  {name:"Chickpea Flour",status:"safe",category:"Flour",note:"Legume-based — safe for AGS.",alt:""},
+  {name:"Cornmeal",status:"safe",category:"Flour",note:"Plant-based — safe for AGS. Great for breading chicken.",alt:""},
+  {name:"Corn Flour",status:"safe",category:"Flour",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Tapioca Flour",status:"safe",category:"Flour",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Gluten-Free All-Purpose Flour",status:"safe",category:"Flour",note:"Plant-based blend — safe for AGS. Check label for any dairy additives.",alt:""},
+  {name:"Buckwheat Flour",status:"safe",category:"Flour",note:"Despite the name, buckwheat is plant-based — safe for AGS.",alt:""},
+  {name:"Spelt Flour",status:"safe",category:"Flour",note:"Ancient grain — plant-based and safe for AGS.",alt:""},
+
+  // BREADING & COATINGS (used as ingredients)
+  {name:"Bread Crumbs (plain)",status:"safe",category:"Breading",note:"Check label for dairy or lard additives. Plain varieties are safe.",alt:""},
+  {name:"Panko Bread Crumbs",status:"safe",category:"Breading",note:"Japanese-style breadcrumbs — generally safe. Check label.",alt:""},
+  {name:"Italian Bread Crumbs",status:"caution",category:"Breading",note:"May contain dairy (cheese). Check label carefully.",alt:"Plain breadcrumbs with added Italian seasoning"},
+  {name:"Crushed Cornflakes",status:"safe",category:"Breading",note:"Great AGS-safe breading for chicken — check cereal label for dairy.",alt:""},
+  {name:"Crushed Crackers",status:"caution",category:"Breading",note:"Check label for dairy or lard. Many crackers are safe.",alt:"Plain rice crackers or gluten-free crackers"},
+  {name:"Potato Chips (as breading)",status:"caution",category:"Breading",note:"Most plain chips are safe. Avoid flavored chips with dairy (sour cream, ranch, cheddar).",alt:"Plain kettle chips, crushed"},
+
+  // POTATO CHIPS & SNACK CHIPS
+  {name:"Plain Potato Chips (Lay's, Kettle)",status:"safe",category:"Snack",note:"Plain salted chips are generally safe for AGS.",alt:""},
+  {name:"Sour Cream & Onion Chips",status:"avoid",category:"Snack",note:"Contains dairy (sour cream) — not safe for AGS.",alt:"Plain chips or oil & vinegar flavor"},
+  {name:"Cheddar Chips",status:"avoid",category:"Snack",note:"Contains dairy cheese powder — not safe for AGS.",alt:"Plain or barbecue flavor chips"},
+  {name:"Ranch Flavored Chips",status:"avoid",category:"Snack",note:"Contains dairy — not safe for AGS.",alt:"Plain or sea salt chips"},
+  {name:"Barbecue Chips",status:"safe",category:"Snack",note:"Most BBQ chips are dairy-free — check label for natural flavors.",alt:""},
+  {name:"Tortilla Chips",status:"safe",category:"Snack",note:"Plain corn tortilla chips are safe. Avoid nacho cheese or ranch flavors.",alt:""},
+  {name:"Rice Cakes",status:"safe",category:"Snack",note:"Plain variety — safe for AGS.",alt:""},
+  {name:"Pretzels",status:"safe",category:"Snack",note:"Generally safe — check for dairy in flavored varieties.",alt:""},
+  {name:"Popcorn (plain)",status:"safe",category:"Snack",note:"Air-popped or plain — safe for AGS.",alt:""},
+  {name:"Popcorn (butter flavored)",status:"avoid",category:"Snack",note:"Contains dairy butter — not safe for AGS.",alt:"Air-popped with coconut oil and sea salt"},
+
+  // PASTA TYPES
+  {name:"Dry Semolina Pasta",status:"safe",category:"Pasta",note:"Wheat and water only — safe for AGS. Most dried pasta falls here.",alt:""},
+  {name:"Egg Pasta / Egg Noodles",status:"caution",category:"Pasta",note:"Contains eggs — generally safe for AGS but verify if egg-sensitive.",alt:"Plain semolina pasta or rice noodles"},
+  {name:"Potato Pasta (Gnocchi)",status:"safe",category:"Pasta",note:"Potato and flour based — safe for AGS. Check for added dairy.",alt:""},
+  {name:"Whole Grain Pasta",status:"safe",category:"Pasta",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Gluten-Free Pasta",status:"safe",category:"Pasta",note:"Rice, corn, or chickpea based — safe for AGS. Check label.",alt:""},
+  {name:"Rice Noodles",status:"safe",category:"Pasta",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Soba Noodles",status:"safe",category:"Pasta",note:"Buckwheat-based — safe for AGS.",alt:""},
+  {name:"Shirataki Noodles",status:"safe",category:"Pasta",note:"Konjac plant-based — safe for AGS.",alt:""},
+  {name:"Chickpea Pasta",status:"safe",category:"Pasta",note:"Legume-based — safe for AGS.",alt:""},
+  {name:"Lentil Pasta",status:"safe",category:"Pasta",note:"Legume-based — safe for AGS.",alt:""},
+
+  // PASTA SAUCES
+  {name:"Marinara Sauce",status:"safe",category:"Pasta Sauce",note:"Tomato-based — safe for AGS. Check for hidden meat or natural flavors.",alt:""},
+  {name:"Tomato Basil Sauce",status:"safe",category:"Pasta Sauce",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Arrabbiata Sauce",status:"safe",category:"Pasta Sauce",note:"Spicy tomato — plant-based and safe for AGS.",alt:""},
+  {name:"Pesto Sauce",status:"caution",category:"Pasta Sauce",note:"Traditional pesto contains parmesan (dairy). Look for dairy-free or vegan pesto.",alt:"Vegan pesto made with nutritional yeast"},
+  {name:"Carbonara Sauce",status:"avoid",category:"Pasta Sauce",note:"Made with eggs, pancetta (pork), and parmesan (dairy) — not safe for AGS.",alt:"Creamy coconut milk sauce with chicken and nutritional yeast"},
+  {name:"Bolognese Sauce",status:"avoid",category:"Pasta Sauce",note:"Meat-based sauce using beef and/or pork — not safe for AGS.",alt:"Chicken or turkey bolognese, or lentil bolognese"},
+  {name:"Alfredo Sauce",status:"avoid",category:"Pasta Sauce",note:"Butter and parmesan based — dairy not safe for AGS.",alt:"Coconut cream sauce with nutritional yeast"},
+  {name:"Vodka Sauce",status:"avoid",category:"Pasta Sauce",note:"Contains heavy cream (dairy) — not safe for AGS.",alt:"Coconut cream tomato sauce"},
+  {name:"Clam Sauce (white)",status:"safe",category:"Pasta Sauce",note:"Clams are shellfish — safe for AGS. Check for dairy additions.",alt:""},
+  {name:"Aglio e Olio",status:"safe",category:"Pasta Sauce",note:"Garlic and olive oil — plant-based and safe for AGS.",alt:""},
+  {name:"Canned Tomato Sauce",status:"safe",category:"Pasta Sauce",note:"Plant-based — safe for AGS. Check for added meat or dairy.",alt:""},
+
+  // DELI MEATS
+  {name:"Ham",status:"avoid",category:"Deli Meat",note:"Pork product — not safe for AGS.",alt:"Turkey deli slices"},
+  {name:"Salami",status:"avoid",category:"Deli Meat",note:"Pork and/or beef — not safe for AGS.",alt:"Chicken or turkey salami"},
+  {name:"Pepperoni",status:"avoid",category:"Deli Meat",note:"Pork and beef — not safe for AGS.",alt:"Turkey pepperoni (check label)"},
+  {name:"Bologna",status:"avoid",category:"Deli Meat",note:"Pork and/or beef — not safe for AGS.",alt:"Turkey bologna"},
+  {name:"Roast Beef (deli)",status:"avoid",category:"Deli Meat",note:"Beef — not safe for AGS.",alt:"Sliced turkey or chicken breast"},
+  {name:"Pastrami",status:"avoid",category:"Deli Meat",note:"Beef — not safe for AGS.",alt:"Turkey pastrami"},
+  {name:"Corned Beef",status:"avoid",category:"Deli Meat",note:"Beef — not safe for AGS.",alt:"Sliced turkey breast"},
+  {name:"Prosciutto",status:"avoid",category:"Deli Meat",note:"Cured pork — not safe for AGS.",alt:"Thinly sliced smoked turkey"},
+  {name:"Turkey Deli Meat",status:"safe",category:"Deli Meat",note:"Poultry-based — safe for AGS. Check for natural flavors or fillers.",alt:""},
+  {name:"Chicken Deli Meat",status:"safe",category:"Deli Meat",note:"Poultry-based — safe for AGS. Check label.",alt:""},
+  {name:"Turkey Pepperoni",status:"caution",category:"Deli Meat",note:"Poultry-based but check label for pork additives or natural flavors.",alt:""},
+  {name:"Turkey Bacon",status:"safe",category:"Deli Meat",note:"Poultry-based — safe for AGS. Check label for additives.",alt:""},
+  {name:"Chicken Sausage",status:"safe",category:"Deli Meat",note:"Poultry-based — safe for AGS. Check for pork casing.",alt:""},
+
+  // PLANT-BASED ALTERNATIVES
+  {name:"Beyond Meat Burger",status:"caution",category:"Plant-Based",note:"Plant-based but check label for carrageenan and natural flavors.",alt:""},
+  {name:"Impossible Burger",status:"caution",category:"Plant-Based",note:"Plant-based but check current label for natural flavors and additives.",alt:""},
+  {name:"Tofurky Deli Slices",status:"caution",category:"Plant-Based",note:"May contain carrageenan — check label. Some AGS individuals react to carrageenan.",alt:"Plain tofu or homemade seitan"},
+  {name:"Field Roast Products",status:"caution",category:"Plant-Based",note:"Check label for carrageenan. Some varieties are safe.",alt:""},
+  {name:"Tofu",status:"safe",category:"Plant-Based",note:"Soy-based — safe for AGS. No carrageenan in plain tofu.",alt:""},
+  {name:"Tempeh",status:"safe",category:"Plant-Based",note:"Fermented soy — safe for AGS.",alt:""},
+  {name:"Seitan",status:"safe",category:"Plant-Based",note:"Wheat gluten — safe for AGS.",alt:""},
+  {name:"Lentils",status:"safe",category:"Plant-Based",note:"Great meat substitute — safe for AGS.",alt:""},
+  {name:"Jackfruit (canned)",status:"safe",category:"Plant-Based",note:"Plant-based meat substitute — safe for AGS.",alt:""},
+  {name:"Vegan Cheese",status:"caution",category:"Plant-Based",note:"Check label for carrageenan — used as thickener in many vegan cheeses.",alt:"Nutritional yeast for cheese flavor"},
+  {name:"Non-Dairy Almond Milk",status:"safe",category:"Plant-Based",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Non-Dairy Soy Milk",status:"safe",category:"Plant-Based",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Non-Dairy Coconut Milk",status:"safe",category:"Plant-Based",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Non-Dairy Oat Milk",status:"safe",category:"Plant-Based",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Dairy-Free Ice Cream (coconut)",status:"safe",category:"Plant-Based",note:"Coconut milk based — safe for AGS.",alt:""},
+  {name:"Dairy-Free Ice Cream (almond)",status:"safe",category:"Plant-Based",note:"Almond milk based — safe for AGS.",alt:""},
+  {name:"Dairy-Free Yogurt (coconut)",status:"safe",category:"Plant-Based",note:"Coconut-based — safe for AGS.",alt:""},
+
+  // CEREALS (adult & children)
+  {name:"Cheerios (plain)",status:"safe",category:"Cereal",note:"Oat-based — safe for AGS.",alt:""},
+  {name:"Honey Nut Cheerios",status:"safe",category:"Cereal",note:"Generally safe — check current label for any dairy.",alt:""},
+  {name:"Corn Flakes (Kellogg's)",status:"safe",category:"Cereal",note:"Corn-based — safe for AGS.",alt:""},
+  {name:"Rice Krispies",status:"safe",category:"Cereal",note:"Rice-based — safe for AGS. Used in cereal bars and treats.",alt:""},
+  {name:"Frosted Flakes",status:"safe",category:"Cereal",note:"Corn-based — generally safe. Check label.",alt:""},
+  {name:"Cocoa Puffs",status:"safe",category:"Cereal",note:"Generally safe — check label for dairy additives.",alt:""},
+  {name:"Lucky Charms",status:"caution",category:"Cereal",note:"Marshmallow pieces contain gelatin — not safe for AGS.",alt:"Plain oat cereal without marshmallows"},
+  {name:"Froot Loops",status:"safe",category:"Cereal",note:"Generally plant-based — check current label.",alt:""},
+  {name:"Cap'n Crunch",status:"safe",category:"Cereal",note:"Generally safe — check label for dairy.",alt:""},
+  {name:"Granola",status:"caution",category:"Cereal",note:"Check label — some granolas contain honey (safe) but others add dairy or natural flavors.",alt:"Make homemade with oats, coconut oil, and maple syrup"},
+  {name:"Oatmeal (plain)",status:"safe",category:"Cereal",note:"Plain oats are safe for AGS.",alt:""},
+  {name:"Cream of Wheat",status:"caution",category:"Cereal",note:"Wheat-based but check for added dairy flavorings.",alt:"Oatmeal or grits"},
+  {name:"Grits",status:"safe",category:"Cereal",note:"Corn-based — safe for AGS. Use plant-based milk/butter.",alt:""},
+  {name:"Cereal Bars (Nature Valley)",status:"caution",category:"Cereal",note:"Check label for dairy, natural flavors, or gelatin.",alt:"Homemade oat bars with coconut oil"},
+  {name:"Rice Krispie Treats",status:"caution",category:"Cereal",note:"Traditional recipe uses butter (dairy) and marshmallows (gelatin). Use dairy-free butter and Dandies marshmallows.",alt:"Dandies marshmallows + coconut oil version"},
+
+  // ALCOHOL (used in cooking)
+  {name:"Vodka",status:"safe",category:"Alcohol",note:"Distilled — safe for AGS. Used in vodka sauce (replace cream with coconut cream).",alt:""},
+  {name:"White Wine",status:"safe",category:"Alcohol",note:"Plant-based — safe for AGS in cooking.",alt:""},
+  {name:"Red Wine",status:"safe",category:"Alcohol",note:"Plant-based — safe for AGS in cooking.",alt:""},
+  {name:"Beer",status:"caution",category:"Alcohol",note:"Most beers are plant-based but some use isinglass (fish-derived) or gelatin as fining agents. Check label or use vegan-certified beer.",alt:"Vegan-certified beer or vegetable broth as substitute"},
+  {name:"Whiskey / Bourbon",status:"safe",category:"Alcohol",note:"Distilled grain spirit — safe for AGS in cooking.",alt:""},
+  {name:"Rum",status:"safe",category:"Alcohol",note:"Distilled — safe for AGS in cooking.",alt:""},
+  {name:"Brandy / Cognac",status:"safe",category:"Alcohol",note:"Distilled — safe for AGS in cooking.",alt:""},
+  {name:"Sake",status:"safe",category:"Alcohol",note:"Rice-based — safe for AGS in cooking.",alt:""},
+  {name:"Mirin",status:"safe",category:"Alcohol",note:"Rice wine — safe for AGS in cooking.",alt:""},
+  {name:"Marsala Wine",status:"safe",category:"Alcohol",note:"Fortified wine — safe for AGS. Use in chicken marsala.",alt:""},
+  {name:"Sherry",status:"safe",category:"Alcohol",note:"Fortified wine — safe for AGS in cooking.",alt:""},
+  {name:"Hard Cider",status:"safe",category:"Alcohol",note:"Apple-based — safe for AGS.",alt:""},
+
+  // FOOD DYES (by color)
+  {name:"Red 40 (Allura Red)",status:"safe",category:"Food Dye",note:"Petroleum-derived synthetic dye — not animal-derived. Generally safe for AGS.",alt:""},
+  {name:"Red 3 (Erythrosine)",status:"safe",category:"Food Dye",note:"Synthetic dye — not animal-derived. Safe for AGS.",alt:""},
+  {name:"Carmine / Cochineal (Red E120)",status:"caution",category:"Food Dye",note:"Derived from insects (not mammals) but debated in AGS community. Some react to it.",alt:"Red 40 or beet juice"},
+  {name:"Yellow 5 (Tartrazine)",status:"safe",category:"Food Dye",note:"Synthetic dye — not animal-derived. Safe for AGS.",alt:""},
+  {name:"Yellow 6 (Sunset Yellow)",status:"safe",category:"Food Dye",note:"Synthetic dye — not animal-derived. Safe for AGS.",alt:""},
+  {name:"Blue 1 (Brilliant Blue)",status:"safe",category:"Food Dye",note:"Synthetic dye — not animal-derived. Safe for AGS.",alt:""},
+  {name:"Blue 2 (Indigo Carmine)",status:"safe",category:"Food Dye",note:"Synthetic dye — not animal-derived. Safe for AGS.",alt:""},
+  {name:"Green 3 (Fast Green)",status:"safe",category:"Food Dye",note:"Synthetic dye — not animal-derived. Safe for AGS.",alt:""},
+  {name:"Annatto (natural orange/yellow)",status:"safe",category:"Food Dye",note:"Plant-derived from achiote seeds — safe for AGS.",alt:""},
+  {name:"Turmeric (natural yellow)",status:"safe",category:"Food Dye",note:"Plant-derived — safe for AGS.",alt:""},
+  {name:"Beet Juice (natural red)",status:"safe",category:"Food Dye",note:"Plant-derived — safe for AGS. Great carmine alternative.",alt:""},
+  {name:"Spirulina (natural blue/green)",status:"safe",category:"Food Dye",note:"Algae-derived — safe for AGS.",alt:""},
+
+  // FLAVORINGS
+  {name:"Pure Vanilla Extract",status:"safe",category:"Flavoring",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Imitation Vanilla",status:"safe",category:"Flavoring",note:"Synthetic — safe for AGS.",alt:""},
+  {name:"Almond Extract",status:"safe",category:"Flavoring",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Peppermint Extract",status:"safe",category:"Flavoring",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Lemon Extract",status:"safe",category:"Flavoring",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Natural Flavors",status:"caution",category:"Flavoring",note:"Vague term — can be plant OR animal-derived. Always contact manufacturer to verify source.",alt:"Cook from scratch with whole ingredients"},
+  {name:"Artificial Flavors",status:"safe",category:"Flavoring",note:"Synthetically derived — not animal-based. Generally safe for AGS.",alt:""},
+  {name:"Butter Flavor (artificial)",status:"safe",category:"Flavoring",note:"Synthetic — does not contain actual dairy. Safe for AGS.",alt:""},
+  {name:"Smoke Flavor / Liquid Smoke",status:"caution",category:"Flavoring",note:"Usually plant-based but verify source — some may be animal-derived.",alt:"Smoked paprika as safe alternative"},
+
+  // SPICE BLENDS & SEASONING MIXES
+  {name:"Italian Seasoning",status:"safe",category:"Spice Blend",note:"Herbs only (basil, oregano, thyme) — safe for AGS.",alt:""},
+  {name:"Taco Seasoning",status:"caution",category:"Spice Blend",note:"Check label for natural flavors or hidden additives. Many are safe.",alt:"Make your own: cumin, chili powder, garlic, paprika, oregano"},
+  {name:"Chili Powder",status:"safe",category:"Spice Blend",note:"Spice blend — safe for AGS.",alt:""},
+  {name:"Cajun Seasoning",status:"safe",category:"Spice Blend",note:"Spice blend — generally safe. Check label for natural flavors.",alt:""},
+  {name:"Greek Seasoning",status:"safe",category:"Spice Blend",note:"Herb blend — safe for AGS.",alt:""},
+  {name:"Curry Powder",status:"safe",category:"Spice Blend",note:"Spice blend — safe for AGS.",alt:""},
+  {name:"Garam Masala",status:"safe",category:"Spice Blend",note:"Spice blend — safe for AGS.",alt:""},
+  {name:"Old Bay Seasoning",status:"safe",category:"Spice Blend",note:"Spice blend — safe for AGS.",alt:""},
+  {name:"Lemon Pepper",status:"safe",category:"Spice Blend",note:"Spice blend — safe for AGS. Check for dairy in some brands.",alt:""},
+  {name:"Ranch Seasoning Powder",status:"avoid",category:"Spice Blend",note:"Contains buttermilk powder (dairy) — not safe for AGS.",alt:"Make your own with dill, garlic, onion, and parsley"},
+  {name:"Onion Soup Mix",status:"caution",category:"Spice Blend",note:"Many brands contain beef extract or natural flavors. Check label carefully.",alt:"Caramelized fresh onions or homemade blend"},
+  {name:"Garlic Powder",status:"safe",category:"Spice Blend",note:"Pure spice — safe for AGS.",alt:""},
+  {name:"Onion Powder",status:"safe",category:"Spice Blend",note:"Pure spice — safe for AGS.",alt:""},
+  {name:"Smoked Paprika",status:"safe",category:"Spice Blend",note:"Pure spice — safe for AGS.",alt:""},
+  {name:"Cumin",status:"safe",category:"Spice Blend",note:"Pure spice — safe for AGS.",alt:""},
+  {name:"Cinnamon",status:"safe",category:"Spice Blend",note:"Pure spice — safe for AGS.",alt:""},
+  {name:"Everything Bagel Seasoning",status:"safe",category:"Spice Blend",note:"Seeds and spices — safe for AGS.",alt:""},
+  {name:"Fajita Seasoning",status:"caution",category:"Spice Blend",note:"Check label for natural flavors source.",alt:"Cumin, chili powder, garlic powder, lime"},
+  {name:"Poultry Seasoning",status:"safe",category:"Spice Blend",note:"Herb blend — safe for AGS.",alt:""},
+  {name:"McCormick Perfect Pinch blends",status:"caution",category:"Spice Blend",note:"Most are safe but always check for natural flavors source.",alt:""},
+
+  // RICE & GRAINS
+  {name:"White Rice",status:"safe",category:"Grain",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Brown Rice",status:"safe",category:"Grain",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Jasmine Rice",status:"safe",category:"Grain",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Basmati Rice",status:"safe",category:"Grain",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Wild Rice",status:"safe",category:"Grain",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Quinoa",status:"safe",category:"Grain",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Oats",status:"safe",category:"Grain",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Couscous",status:"safe",category:"Grain",note:"Wheat-based — safe for AGS.",alt:""},
+  {name:"Polenta",status:"safe",category:"Grain",note:"Cornmeal-based — safe for AGS.",alt:""},
+  {name:"Farro",status:"safe",category:"Grain",note:"Ancient grain — safe for AGS.",alt:""},
+  {name:"Barley",status:"safe",category:"Grain",note:"Plant-based — safe for AGS.",alt:""},
+
+  // BREAD & BAKED GOODS
+  {name:"White Bread",status:"safe",category:"Bread",note:"Most commercial white bread is safe — check for dairy or lard.",alt:""},
+  {name:"Whole Wheat Bread",status:"safe",category:"Bread",note:"Check label for dairy additives.",alt:""},
+  {name:"Sourdough Bread",status:"safe",category:"Bread",note:"Generally dairy-free — safe for AGS.",alt:""},
+  {name:"Pita Bread",status:"safe",category:"Bread",note:"Generally dairy-free — safe for AGS.",alt:""},
+  {name:"Tortillas (corn)",status:"safe",category:"Bread",note:"Corn tortillas are safe — no lard.",alt:""},
+  {name:"Tortillas (flour)",status:"caution",category:"Bread",note:"Some flour tortillas contain lard. Check label.",alt:"Corn tortillas or lard-free flour tortillas"},
+  {name:"Hamburger Buns",status:"caution",category:"Bread",note:"May contain dairy (milk, butter). Check label.",alt:"Dairy-free buns or lettuce wraps"},
+  {name:"Dinner Rolls",status:"caution",category:"Bread",note:"Often contain butter or milk. Check label.",alt:"Dairy-free rolls"},
+  {name:"Crackers (plain)",status:"safe",category:"Bread",note:"Most plain crackers are safe — check for dairy.",alt:""},
+  {name:"Graham Crackers",status:"caution",category:"Bread",note:"May contain honey (safe) and some dairy. Check label.",alt:"Dairy-free variety"},
+
+  // BAKING STAPLES
+  {name:"Baking Powder",status:"safe",category:"Baking",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Baking Soda",status:"safe",category:"Baking",note:"Mineral-based — safe for AGS.",alt:""},
+  {name:"Yeast",status:"safe",category:"Baking",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Cocoa Powder",status:"safe",category:"Baking",note:"Plant-based — safe for AGS.",alt:""},
+  {name:"Dark Chocolate",status:"safe",category:"Baking",note:"Check label for dairy — many dark chocolates are dairy-free.",alt:""},
+  {name:"Milk Chocolate",status:"avoid",category:"Baking",note:"Contains dairy (milk) — not safe for AGS.",alt:"Dairy-free dark chocolate"},
+  {name:"White Chocolate",status:"avoid",category:"Baking",note:"Contains dairy (cocoa butter + milk) — not safe for AGS.",alt:"Dairy-free white chocolate chips"},
+  {name:"Dairy-Free Chocolate Chips",status:"safe",category:"Baking",note:"Check label — Enjoy Life brand is a reliable dairy-free option.",alt:""},
+  {name:"Shortening (Crisco)",status:"caution",category:"Baking",note:"Modern Crisco is vegetable-based but check label — older formulas used lard.",alt:"Coconut oil (1:1)"},
+  {name:"Cream of Tartar",status:"safe",category:"Baking",note:"Plant-derived — safe for AGS.",alt:""},
 ];
 
 let currentFilter = 'all';
+let currentFilterType = 'status';
+let currentCatFilter = 'all';
 let currentSearch = '';
 
 function renderIngredients() {
@@ -890,8 +1137,9 @@ function renderIngredients() {
   const q = currentSearch.toLowerCase().trim();
   let filtered = INGREDIENTS.filter(i => {
     const matchSearch = !q || i.name.toLowerCase().includes(q) || i.category.toLowerCase().includes(q) || i.note.toLowerCase().includes(q);
-    const matchFilter = currentFilter === 'all' || i.status === currentFilter;
-    return matchSearch && matchFilter;
+    const matchStatus = currentFilter === 'all' || i.status === currentFilter;
+    const matchCat = currentCatFilter === 'all' || i.category === currentCatFilter;
+    return matchSearch && matchStatus && matchCat;
   });
   count.textContent = filtered.length + ' ingredient' + (filtered.length !== 1 ? 's' : '') + ' found';
   if (filtered.length === 0) {
@@ -915,9 +1163,18 @@ function searchIngredients() {
   renderIngredients();
 }
 
-function setFilter(f, btn) {
-  currentFilter = f;
-  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active','active-avoid','active-caution'));
+function setFilter(f, type, btn) {
+  if (type === 'status') {
+    currentFilter = f;
+  } else {
+    currentCatFilter = f;
+  }
+  // Reset appropriate chips
+  if (type === 'status') {
+    document.querySelectorAll('.filter-row:first-of-type .filter-chip').forEach(c => c.classList.remove('active'));
+  } else {
+    document.querySelectorAll('.filter-row:last-of-type .filter-chip').forEach(c => c.classList.remove('active','active-cat'));
+  }
   btn.classList.add('active');
   renderIngredients();
 }
