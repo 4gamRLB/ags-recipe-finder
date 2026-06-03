@@ -1379,9 +1379,27 @@ function clearFinder() {
   document.getElementById('finder-results').innerHTML = '';
 }
 
+let finderSearchCount = 0;
+
+const styleVariations = [
+  'Focus on quick and easy weeknight meals — under 30 minutes.',
+  'Focus on comfort food — hearty, filling, satisfying dishes.',
+  'Focus on fresh and light — bright flavors, fresh herbs, minimal cooking.',
+  'Focus on bold international flavors — Asian, Mediterranean, or Latin-inspired.',
+  'Focus on budget-friendly meals using simple pantry staples.',
+  'Focus on meal-prep friendly dishes that store well.',
+  'Focus on one-pot or sheet-pan meals for easy cleanup.',
+  'Think outside the box — creative, unexpected, impressive dishes.',
+];
+
 async function runFinder() {
   const val = document.getElementById('finder-input').value.trim();
   if (!val) { showErr('finder', 'Please enter a dish name or ingredients.'); return; }
+
+  // Rotate style variation so Search Again always gives fresh results
+  finderSearchCount++;
+  const styleHint = styleVariations[(finderSearchCount - 1) % styleVariations.length];
+  const searchRound = finderSearchCount > 1 ? `This is search attempt #${finderSearchCount} — give COMPLETELY DIFFERENT recipes from any previous suggestions. ` : '';
 
   // Determine if it's an ingredient list or a dish name
   const isIngredients = val.includes(',') || val.toLowerCase().includes(' and ') || val.split(' ').length > 4;
@@ -1412,10 +1430,10 @@ Instructions:
 Tips: [1-2 helpful tips]`;
 
   const prompt = isIngredients
-    ? `I have these ingredients: ${val}. Please create 3 DIFFERENT AGS-safe (Alpha-Gal Syndrome safe) recipes I can make with them. Make each recipe distinct — different cooking methods or flavor profiles. Use this exact format:
+    ? `${searchRound}I have these ingredients: ${val}. Please create 3 DIFFERENT AGS-safe (Alpha-Gal Syndrome safe) recipes I can make with them. Make each recipe distinct — different cooking methods or flavor profiles. Style direction: ${styleHint} Use this exact format:
 ${recipeFormat}
 IMPORTANT: ALL ingredients in ALL recipes must be 100% AGS-safe (no mammal meat, no dairy, no gelatin, no lard, no mammal-derived products).`
-    : `Please create 3 DIFFERENT AGS-safe (Alpha-Gal Syndrome safe) recipe variations for: ${val}. Each variation should use a different approach, base ingredient, or flavor profile so the reader has real choices. Use this exact format:
+    : `${searchRound}Please create 3 DIFFERENT AGS-safe (Alpha-Gal Syndrome safe) recipe variations for: ${val}. Each variation should use a genuinely different approach — different base ingredients, cooking method, or cuisine style. Style direction for this search: ${styleHint} Use this exact format:
 ${recipeFormat}
 IMPORTANT: ALL ingredients in ALL recipes must be 100% AGS-safe (no mammal meat, no dairy, no gelatin, no lard, no mammal-derived products).`;
 
