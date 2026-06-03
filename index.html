@@ -325,18 +325,50 @@
   <div id="tab-adapt" class="tab-panel">
     <div class="card">
       <div class="card-title">Adapt Any Recipe for AGS</div>
-      <div class="card-desc">Paste a full recipe below. The AI will identify every mammal-derived ingredient and rewrite the recipe with safe substitutions in place.</div>
-      <label class="field-label" for="adapt-input">Paste your recipe here:</label>
-      <textarea id="adapt-input" rows="8" placeholder="Include both ingredients and instructions. Works with any cuisine — baked goods, soups, sauces, casseroles, desserts, and more."></textarea>
+      <div class="card-desc">Paste a full recipe below — ingredients AND instructions. The AI will identify every mammal-derived ingredient, swap it for a safe alternative, and rewrite the complete recipe including adapted cooking instructions.</div>
+      <label class="field-label" for="adapt-input">Paste your recipe here (ingredients + instructions):</label>
+      <textarea id="adapt-input" rows="9" placeholder="Paste the full recipe including ingredients AND cooking instructions. The more complete the recipe, the better the adaptation. Works with any cuisine — baked goods, soups, sauces, casseroles, desserts, and more."></textarea>
       <div class="action-row">
         <button class="btn btn-primary" id="adapt-btn" onclick="runAdapt()"><i class="ti ti-wand"></i> Adapt this recipe</button>
+        <button class="btn" id="adapt-clear-btn" onclick="clearAdapt()" style="background:var(--bg);border:1px solid var(--border-mid);color:var(--text-muted);"><i class="ti ti-refresh"></i> Clear &amp; start over</button>
       </div>
       <div class="err" id="adapt-err"><i class="ti ti-alert-circle"></i> Please paste a recipe to adapt.</div>
       <div class="loading" id="adapt-loading"><span class="loading-text">Adapting your recipe</span><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
       <div class="result" id="adapt-result">
-        <div class="result-header"><span class="result-label"><i class="ti ti-wand"></i> AGS-Safe Adaptation</span><button class="copy-btn" onclick="copyResult('adapt-result')"><i class="ti ti-copy" style="font-size:13px"></i> Copy</button></div>
+        <div class="result-header">
+          <span class="result-label"><i class="ti ti-wand"></i> AGS-Safe Adapted Recipe</span>
+          <div style="display:flex;gap:6px;">
+            <button class="copy-btn" onclick="copyResult('adapt-result')"><i class="ti ti-copy" style="font-size:13px"></i> Copy</button>
+            <button class="copy-btn" onclick="clearAdapt()" style="color:var(--text-muted);"><i class="ti ti-refresh" style="font-size:13px"></i> New recipe</button>
+          </div>
+        </div>
         <div class="result-body"></div>
       </div>
+    </div>
+
+    <!-- RECIPE FINDER CARD -->
+    <div class="card" style="margin-top:1rem;">
+      <div class="card-title"><i class="ti ti-world-search" style="font-size:18px;vertical-align:-3px;margin-right:6px;color:var(--sage);"></i>Find an AGS-Safe Recipe</div>
+      <div class="card-desc">Name a dish you want to make, or list ingredients you have on hand. The AI will generate AGS-safe recipes for you to choose from — no searching required.</div>
+
+      <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+        <button class="chip" onclick="setFinder('Coffee creamer')">Coffee creamer</button>
+        <button class="chip" onclick="setFinder('Chicken soup')">Chicken soup</button>
+        <button class="chip" onclick="setFinder('Dairy-free mac and cheese')">Dairy-free mac &amp; cheese</button>
+        <button class="chip" onclick="setFinder('AGS-safe birthday cake')">Birthday cake</button>
+        <button class="chip" onclick="setFinder('Chicken, egg noodles, cashew cream, frozen veggie blend')">Chicken + noodles + veggies</button>
+      </div>
+
+      <label class="field-label" for="finder-input">Name a dish OR list ingredients you have:</label>
+      <textarea id="finder-input" rows="3" placeholder="Examples:&#10;• Alpha-Gal safe coffee creamer&#10;• Chicken, sweet potatoes, coconut milk, garlic — what can I make?&#10;• AGS-safe holiday stuffing"></textarea>
+
+      <div class="action-row" style="margin-top:10px;">
+        <button class="btn btn-primary" id="finder-btn" onclick="runFinder()"><i class="ti ti-sparkles"></i> Find AGS-safe recipes</button>
+        <button class="btn" onclick="clearFinder()" style="background:var(--bg);border:1px solid var(--border-mid);color:var(--text-muted);"><i class="ti ti-refresh"></i> Clear</button>
+      </div>
+      <div class="err" id="finder-err"><i class="ti ti-alert-circle"></i> Please enter a dish name or ingredients.</div>
+      <div class="loading" id="finder-loading"><span class="loading-text">Finding recipes</span><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      <div id="finder-results"></div>
     </div>
   </div>
 
@@ -1271,7 +1303,30 @@ async function callAI(userMsg, prefix) {
 function runAdapt() {
   const val = document.getElementById('adapt-input').value.trim();
   if (!val) { showErr('adapt', 'Please paste a recipe to adapt.'); return; }
-  callAI(`Please adapt this recipe to be 100% Alpha-Gal Syndrome safe. Identify every mammal-derived ingredient, explain the concern briefly, provide an exact safe substitute with quantity, then rewrite the full ingredient list with substitutions in place.\n\nRecipe:\n${val}`, 'adapt');
+  callAI(`Please adapt this recipe to be 100% Alpha-Gal Syndrome (AGS) safe. Follow this exact format in your response:
+
+## What I Changed
+List each mammal-derived ingredient that was replaced, what it was replaced with, and why (one line each).
+
+## AGS-Safe Ingredient List
+Rewrite the complete ingredient list using only the safe substitutions.
+
+## AGS-Safe Cooking Instructions
+Rewrite the full cooking instructions adapted to use the new safe ingredients. Note any changes to technique, timing, or temperature that result from the substitutions.
+
+## Tips & Notes
+Any helpful tips for making this AGS-safe version a success.
+
+Recipe to adapt:
+${val}`, 'adapt');
+}
+
+function clearAdapt() {
+  document.getElementById('adapt-input').value = '';
+  const result = document.getElementById('adapt-result');
+  result.classList.remove('visible');
+  result.querySelector('.result-body').textContent = '';
+  document.getElementById('adapt-input').focus();
 }
 
 function runSub() {
@@ -1294,6 +1349,115 @@ function runAsk() {
 
 // Init ingredient list on load
 renderIngredients();
+
+function setFinder(q) {
+  document.getElementById('finder-input').value = q;
+}
+
+function clearFinder() {
+  document.getElementById('finder-input').value = '';
+  document.getElementById('finder-results').innerHTML = '';
+}
+
+async function runFinder() {
+  const val = document.getElementById('finder-input').value.trim();
+  if (!val) { showErr('finder', 'Please enter a dish name or ingredients.'); return; }
+
+  // Determine if it's an ingredient list or a dish name
+  const isIngredients = val.includes(',') || val.toLowerCase().includes(' and ') || val.split(' ').length > 4;
+
+  const prompt = isIngredients
+    ? `I have these ingredients: ${val}. Please create 3 different AGS-safe (Alpha-Gal Syndrome safe) recipes I can make with them. For each recipe provide:
+RECIPE 1: [Recipe Name]
+Serves: [number]
+Ingredients: [full list with amounts]
+Instructions: [step by step]
+---
+RECIPE 2: [Recipe Name]
+Serves: [number]
+Ingredients: [full list with amounts]
+Instructions: [step by step]
+---
+RECIPE 3: [Recipe Name]
+Serves: [number]
+Ingredients: [full list with amounts]
+Instructions: [step by step]
+Make sure ALL ingredients in all recipes are 100% AGS-safe (no mammal meat, dairy, gelatin, lard, or mammal-derived products).`
+    : `Please create a detailed AGS-safe (Alpha-Gal Syndrome safe) recipe for: ${val}. Include:
+- Recipe name
+- Serves
+- Complete ingredient list with amounts (all AGS-safe)
+- Step by step cooking instructions
+- Any tips for success
+Make sure ALL ingredients are 100% AGS-safe (no mammal meat, dairy, gelatin, lard, or mammal-derived products).`;
+
+  const btn = document.getElementById('finder-btn');
+  btn.disabled = true;
+  document.getElementById('finder-loading').classList.add('visible');
+  document.getElementById('finder-results').innerHTML = '';
+
+  try {
+    const res = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ system: SYSTEM_PROMPT, message: prompt })
+    });
+    if (!res.ok) throw new Error('Request failed: ' + res.status);
+    const data = await res.json();
+    const text = data.content || data.text || 'No recipes returned.';
+
+    if (isIngredients) {
+      // Split into individual recipes and render each with its own copy button
+      const parts = text.split(/---+/).map(s => s.trim()).filter(s => s.length > 20);
+      if (parts.length >= 2) {
+        document.getElementById('finder-results').innerHTML = parts.map((recipe, i) => `
+          <div style="background:var(--sage-pale);border:1px solid rgba(99,153,34,0.2);border-radius:var(--radius-lg);overflow:hidden;margin-top:12px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--sage-light);border-bottom:1px solid rgba(99,153,34,0.18);">
+              <span style="font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--sage-dark);display:flex;align-items:center;gap:6px;"><i class="ti ti-chef-hat" style="font-size:14px;"></i> Recipe Option ${i+1}</span>
+              <button class="copy-btn" onclick="copyRecipe(this, 'recipe-${i}')"><i class="ti ti-copy" style="font-size:13px"></i> Copy this recipe</button>
+            </div>
+            <div id="recipe-${i}" style="padding:1.1rem 1.25rem;font-size:14.5px;line-height:1.85;color:var(--text-main);white-space:pre-wrap;">${recipe}</div>
+          </div>`).join('');
+      } else {
+        // fallback single result
+        document.getElementById('finder-results').innerHTML = `
+          <div style="background:var(--sage-pale);border:1px solid rgba(99,153,34,0.2);border-radius:var(--radius-lg);overflow:hidden;margin-top:12px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--sage-light);border-bottom:1px solid rgba(99,153,34,0.18);">
+              <span style="font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--sage-dark);"><i class="ti ti-chef-hat" style="font-size:14px;margin-right:5px;"></i> AGS-Safe Recipe</span>
+              <button class="copy-btn" onclick="copyRecipe(this, 'recipe-single')"><i class="ti ti-copy" style="font-size:13px"></i> Copy recipe</button>
+            </div>
+            <div id="recipe-single" style="padding:1.1rem 1.25rem;font-size:14.5px;line-height:1.85;color:var(--text-main);white-space:pre-wrap;">${text}</div>
+          </div>`;
+      }
+    } else {
+      document.getElementById('finder-results').innerHTML = `
+        <div style="background:var(--sage-pale);border:1px solid rgba(99,153,34,0.2);border-radius:var(--radius-lg);overflow:hidden;margin-top:12px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--sage-light);border-bottom:1px solid rgba(99,153,34,0.18);">
+            <span style="font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--sage-dark);"><i class="ti ti-chef-hat" style="font-size:14px;margin-right:5px;"></i> AGS-Safe Recipe</span>
+            <button class="copy-btn" onclick="copyRecipe(this, 'recipe-single')"><i class="ti ti-copy" style="font-size:13px"></i> Copy recipe</button>
+          </div>
+          <div id="recipe-single" style="padding:1.1rem 1.25rem;font-size:14.5px;line-height:1.85;color:var(--text-main);white-space:pre-wrap;">${text}</div>
+        </div>`;
+    }
+  } catch(e) {
+    document.getElementById('finder-results').innerHTML = `<p style="color:var(--red-dark);padding:10px;">Something went wrong. Please try again. (${e.message})</p>`;
+  }
+
+  btn.disabled = false;
+  document.getElementById('finder-loading').classList.remove('visible');
+}
+
+function copyRecipe(btn, id) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<i class="ti ti-check" style="font-size:13px"></i> Copied!';
+    // Reset button and clear the result after copy
+    setTimeout(() => {
+      btn.innerHTML = orig;
+    }, 2000);
+  });
+}
 </script>
 </body>
 </html>
