@@ -11,8 +11,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/dist/tabler-icons.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@tabler/icons-webfont@2.47.0/dist/tabler-icons.min.css" />
+  <style>
+    /* Icon fallback — if CDN fails, hide broken icon boxes gracefully */
+    .ti::before { display: inline-block; }
+  </style>
 
+  <script>
+    // If Tabler Icons CDN fails to load, switch to text emoji fallbacks
+    window.addEventListener('load', function() {
+      const testEl = document.createElement('span');
+      testEl.className = 'ti ti-check';
+      testEl.style.cssText = 'position:absolute;visibility:hidden;font-family:tabler-icons';
+      document.body.appendChild(testEl);
+      const computed = window.getComputedStyle(testEl, '::before').content;
+      document.body.removeChild(testEl);
+      if (!computed || computed === 'none' || computed === '""') {
+        // Icons not loading — add a class to body to show text fallbacks
+        document.body.classList.add('no-icons');
+      }
+    });
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1366,30 +1386,38 @@ async function runFinder() {
   // Determine if it's an ingredient list or a dish name
   const isIngredients = val.includes(',') || val.toLowerCase().includes(' and ') || val.split(' ').length > 4;
 
+  const recipeFormat = `
+RECIPE 1: [Recipe Name — Variation 1]
+Serves: [number]
+Ingredients:
+[full ingredient list with amounts]
+Instructions:
+[numbered step by step instructions]
+Tips: [1-2 helpful tips]
+---
+RECIPE 2: [Recipe Name — Variation 2]
+Serves: [number]
+Ingredients:
+[full ingredient list with amounts]
+Instructions:
+[numbered step by step instructions]
+Tips: [1-2 helpful tips]
+---
+RECIPE 3: [Recipe Name — Variation 3]
+Serves: [number]
+Ingredients:
+[full ingredient list with amounts]
+Instructions:
+[numbered step by step instructions]
+Tips: [1-2 helpful tips]`;
+
   const prompt = isIngredients
-    ? `I have these ingredients: ${val}. Please create 3 different AGS-safe (Alpha-Gal Syndrome safe) recipes I can make with them. For each recipe provide:
-RECIPE 1: [Recipe Name]
-Serves: [number]
-Ingredients: [full list with amounts]
-Instructions: [step by step]
----
-RECIPE 2: [Recipe Name]
-Serves: [number]
-Ingredients: [full list with amounts]
-Instructions: [step by step]
----
-RECIPE 3: [Recipe Name]
-Serves: [number]
-Ingredients: [full list with amounts]
-Instructions: [step by step]
-Make sure ALL ingredients in all recipes are 100% AGS-safe (no mammal meat, dairy, gelatin, lard, or mammal-derived products).`
-    : `Please create a detailed AGS-safe (Alpha-Gal Syndrome safe) recipe for: ${val}. Include:
-- Recipe name
-- Serves
-- Complete ingredient list with amounts (all AGS-safe)
-- Step by step cooking instructions
-- Any tips for success
-Make sure ALL ingredients are 100% AGS-safe (no mammal meat, dairy, gelatin, lard, or mammal-derived products).`;
+    ? `I have these ingredients: ${val}. Please create 3 DIFFERENT AGS-safe (Alpha-Gal Syndrome safe) recipes I can make with them. Make each recipe distinct — different cooking methods or flavor profiles. Use this exact format:
+${recipeFormat}
+IMPORTANT: ALL ingredients in ALL recipes must be 100% AGS-safe (no mammal meat, no dairy, no gelatin, no lard, no mammal-derived products).`
+    : `Please create 3 DIFFERENT AGS-safe (Alpha-Gal Syndrome safe) recipe variations for: ${val}. Each variation should use a different approach, base ingredient, or flavor profile so the reader has real choices. Use this exact format:
+${recipeFormat}
+IMPORTANT: ALL ingredients in ALL recipes must be 100% AGS-safe (no mammal meat, no dairy, no gelatin, no lard, no mammal-derived products).`;
 
   const btn = document.getElementById('finder-btn');
   btn.disabled = true;
@@ -1410,16 +1438,22 @@ Make sure ALL ingredients are 100% AGS-safe (no mammal meat, dairy, gelatin, lar
       // Split into individual recipes and render each with its own copy button
       const parts = text.split(/---+/).map(s => s.trim()).filter(s => s.length > 20);
       if (parts.length >= 2) {
-        document.getElementById('finder-results').innerHTML = parts.map((recipe, i) => `
+        const searchAgainBtn = `<div style="text-align:center;margin-top:14px;">
+        <button class="btn btn-primary" onclick="runFinder()" style="background:var(--herb);font-size:13px;padding:8px 18px;">
+          <i class="ti ti-refresh"></i> Search again for different recipes
+        </button>
+      </div>`;
+
+      document.getElementById('finder-results').innerHTML = parts.map((recipe, i) => `
           <div style="background:var(--sage-pale);border:1px solid rgba(99,153,34,0.2);border-radius:var(--radius-lg);overflow:hidden;margin-top:12px;">
             <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--sage-light);border-bottom:1px solid rgba(99,153,34,0.18);">
-              <span style="font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--sage-dark);display:flex;align-items:center;gap:6px;"><i class="ti ti-chef-hat" style="font-size:14px;"></i> Recipe Option ${i+1}</span>
+              <span style="font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--sage-dark);display:flex;align-items:center;gap:6px;"><i class="ti ti-chef-hat" style="font-size:14px;"></i> Recipe Option ${i+1} of ${parts.length}</span>
               <button class="copy-btn" onclick="copyRecipe(this, 'recipe-${i}')"><i class="ti ti-copy" style="font-size:13px"></i> Copy this recipe</button>
             </div>
             <div id="recipe-${i}" style="padding:1.1rem 1.25rem;font-size:14.5px;line-height:1.85;color:var(--text-main);white-space:pre-wrap;">${recipe}</div>
-          </div>`).join('');
+          </div>`).join('') + searchAgainBtn;
       } else {
-        // fallback single result
+        // fallback single result — still show search again
         document.getElementById('finder-results').innerHTML = `
           <div style="background:var(--sage-pale);border:1px solid rgba(99,153,34,0.2);border-radius:var(--radius-lg);overflow:hidden;margin-top:12px;">
             <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--sage-light);border-bottom:1px solid rgba(99,153,34,0.18);">
@@ -1427,17 +1461,40 @@ Make sure ALL ingredients are 100% AGS-safe (no mammal meat, dairy, gelatin, lar
               <button class="copy-btn" onclick="copyRecipe(this, 'recipe-single')"><i class="ti ti-copy" style="font-size:13px"></i> Copy recipe</button>
             </div>
             <div id="recipe-single" style="padding:1.1rem 1.25rem;font-size:14.5px;line-height:1.85;color:var(--text-main);white-space:pre-wrap;">${text}</div>
+          </div>
+          <div style="text-align:center;margin-top:14px;">
+            <button class="btn btn-primary" onclick="runFinder()" style="background:var(--herb);font-size:13px;padding:8px 18px;">
+              <i class="ti ti-refresh"></i> Search again for different recipes
+            </button>
           </div>`;
       }
     } else {
-      document.getElementById('finder-results').innerHTML = `
-        <div style="background:var(--sage-pale);border:1px solid rgba(99,153,34,0.2);border-radius:var(--radius-lg);overflow:hidden;margin-top:12px;">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--sage-light);border-bottom:1px solid rgba(99,153,34,0.18);">
-            <span style="font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--sage-dark);"><i class="ti ti-chef-hat" style="font-size:14px;margin-right:5px;"></i> AGS-Safe Recipe</span>
-            <button class="copy-btn" onclick="copyRecipe(this, 'recipe-single')"><i class="ti ti-copy" style="font-size:13px"></i> Copy recipe</button>
-          </div>
-          <div id="recipe-single" style="padding:1.1rem 1.25rem;font-size:14.5px;line-height:1.85;color:var(--text-main);white-space:pre-wrap;">${text}</div>
-        </div>`;
+      // Named dish — also show 3 recipes, same format
+      const parts2 = text.split(/---+/).map(s => s.trim()).filter(s => s.length > 20);
+      const searchAgainBtn2 = `<div style="text-align:center;margin-top:14px;">
+        <button class="btn btn-primary" onclick="runFinder()" style="background:var(--herb);font-size:13px;padding:8px 18px;">
+          <i class="ti ti-refresh"></i> Search again for different recipes
+        </button>
+      </div>`;
+      if (parts2.length >= 2) {
+        document.getElementById('finder-results').innerHTML = parts2.map((recipe, i) => `
+          <div style="background:var(--sage-pale);border:1px solid rgba(99,153,34,0.2);border-radius:var(--radius-lg);overflow:hidden;margin-top:12px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--sage-light);border-bottom:1px solid rgba(99,153,34,0.18);">
+              <span style="font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--sage-dark);display:flex;align-items:center;gap:6px;"><i class="ti ti-chef-hat" style="font-size:14px;"></i> Recipe Option ${i+1} of ${parts2.length}</span>
+              <button class="copy-btn" onclick="copyRecipe(this, 'finder-recipe-${i}')"><i class="ti ti-copy" style="font-size:13px"></i> Copy this recipe</button>
+            </div>
+            <div id="finder-recipe-${i}" style="padding:1.1rem 1.25rem;font-size:14.5px;line-height:1.85;color:var(--text-main);white-space:pre-wrap;">${recipe}</div>
+          </div>`).join('') + searchAgainBtn2;
+      } else {
+        document.getElementById('finder-results').innerHTML = `
+          <div style="background:var(--sage-pale);border:1px solid rgba(99,153,34,0.2);border-radius:var(--radius-lg);overflow:hidden;margin-top:12px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--sage-light);border-bottom:1px solid rgba(99,153,34,0.18);">
+              <span style="font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--sage-dark);"><i class="ti ti-chef-hat" style="font-size:14px;margin-right:5px;"></i> AGS-Safe Recipe</span>
+              <button class="copy-btn" onclick="copyRecipe(this, 'recipe-single2')"><i class="ti ti-copy" style="font-size:13px"></i> Copy recipe</button>
+            </div>
+            <div id="recipe-single2" style="padding:1.1rem 1.25rem;font-size:14.5px;line-height:1.85;color:var(--text-main);white-space:pre-wrap;">${text}</div>
+          </div>` + searchAgainBtn2;
+      }
     }
   } catch(e) {
     document.getElementById('finder-results').innerHTML = `<p style="color:var(--red-dark);padding:10px;">Something went wrong. Please try again. (${e.message})</p>`;
