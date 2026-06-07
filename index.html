@@ -332,7 +332,14 @@
         <button class="filter-chip" onclick="setFilter('Medication','category',this)" style="font-size:11.5px;padding:4px 10px;">Medications</button>
       </div>
 
-      <div class="ing-results visible" id="ing-results">
+      <!-- Neutral start state -->
+      <div id="ing-prompt" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem 1rem;text-align:center;color:var(--text-faint);">
+        <i class="ti ti-search" style="font-size:40px;margin-bottom:12px;opacity:0.3;"></i>
+        <p style="font-size:15px;font-weight:500;color:var(--text-muted);margin-bottom:6px;">Search or choose a filter to get started</p>
+        <p style="font-size:13px;line-height:1.6;max-width:380px;">Type any ingredient or product name above, or tap <strong>Safe</strong>, <strong>Avoid</strong>, or <strong>Use Caution</strong> to browse by category.</p>
+      </div>
+
+      <div class="ing-results" id="ing-results">
         <div class="ing-count" id="ing-count"></div>
         <div class="ing-grid" id="ing-grid"></div>
       </div>
@@ -1183,10 +1190,26 @@ let currentFilterType = 'status';
 let currentCatFilter = 'all';
 let currentSearch = '';
 
+function showIngredientPrompt() {
+  const grid = document.getElementById('ing-grid');
+  const count = document.getElementById('ing-count');
+  const prompt = document.getElementById('ing-prompt');
+  grid.innerHTML = '';
+  count.textContent = '';
+  if (prompt) prompt.style.display = 'flex';
+}
+
 function renderIngredients() {
+  const prompt = document.getElementById('ing-prompt');
+  if (prompt) prompt.style.display = 'none';
   const grid = document.getElementById('ing-grid');
   const count = document.getElementById('ing-count');
   const q = currentSearch.toLowerCase().trim();
+  // If nothing selected and no search, show prompt instead
+  if (!q && currentFilter === 'all' && currentCatFilter === 'all') {
+    showIngredientPrompt();
+    return;
+  }
   let filtered = INGREDIENTS.filter(i => {
     const matchSearch = !q || i.name.toLowerCase().includes(q) || i.category.toLowerCase().includes(q) || i.note.toLowerCase().includes(q);
     const matchStatus = currentFilter === 'all' || i.status === currentFilter;
@@ -1221,14 +1244,18 @@ function setFilter(f, type, btn) {
   } else {
     currentCatFilter = f;
   }
-  // Reset appropriate chips
   if (type === 'status') {
     document.querySelectorAll('.filter-row:first-of-type .filter-chip').forEach(c => c.classList.remove('active'));
   } else {
     document.querySelectorAll('.filter-row:last-of-type .filter-chip').forEach(c => c.classList.remove('active','active-cat'));
   }
   btn.classList.add('active');
-  renderIngredients();
+  // If both reset to 'all' and no search, go back to prompt
+  if (currentFilter === 'all' && currentCatFilter === 'all' && !currentSearch.trim()) {
+    showIngredientPrompt();
+  } else {
+    renderIngredients();
+  }
 }
 
 /* ══════════════════════════════════════════════════════
@@ -1367,8 +1394,8 @@ function runAsk() {
   callAI(val, 'ask');
 }
 
-// Init ingredient list on load
-renderIngredients();
+// Do NOT auto-render on load — wait for user interaction
+showIngredientPrompt();
 
 function setFinder(q) {
   document.getElementById('finder-input').value = q;
