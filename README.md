@@ -8,10 +8,9 @@
 
 ## What Is This?
 
-The **Alpha-Gal Safe Recipe Finder** is an interactive web tool that helps people living with Alpha-Gal Syndrome (AGS) navigate food safety with confidence. It uses AI to check ingredients, adapt existing recipes, suggest safe substitutions, and answer any AGS-related food question.
+The **Alpha-Gal Safe Recipe Finder** is an interactive web tool that helps people living with Alpha-Gal Syndrome (AGS) navigate food safety with confidence. It combines a large searchable ingredient/product database with AI-powered recipe adaptation, substitution suggestions, and a Q&A advisor — all completely free for readers, with no account or API key required.
 
-**Live tool:** [4gamRLB.github.io/ags-recipe-finder](https://4gamRLB.github.io/ags-recipe-finder)
-*(Replace with your real GitHub Pages URL after publishing)*
+**Live tool:** [ags.rlbdesigns.com](https://ags.rlbdesigns.com)
 
 ---
 
@@ -19,11 +18,12 @@ The **Alpha-Gal Safe Recipe Finder** is an interactive web tool that helps peopl
 
 | Tab | What It Does |
 |-----|-------------|
-| 🛡️ **Ingredient Check** | Check any ingredient (or list) for AGS safety — with a SAFE / NOT SAFE / USE CAUTION verdict and explanation |
-| 🪄 **Adapt a Recipe** | Paste any recipe and receive a fully rewritten AGS-safe version with substitutions in place |
-| 🔄 **Find a Substitute** | Enter an ingredient + dish type and get 2–4 safe swaps with exact ratios and tips |
-| 💬 **Ask Anything** | Open-ended AGS safety questions — label reading, restaurant tips, hidden sources of alpha-gal |
-| 📋 **Safe Reference List** | At-a-glance guide to always-safe, never-safe, and use-caution food categories |
+| 🔍 **Search All** | Search 355+ ingredients and common cooking products — flours, pastas, sauces, cereals, deli meats, alcohol, food dyes, spice blends, and more. Filter by Safe / Avoid / Use Caution and by category. Starts in a clean neutral state — results only appear once the user searches or selects a filter. |
+| 🪄 **Adapt a Recipe** | Paste a full recipe (ingredients + instructions). The AI identifies mammal-derived ingredients, substitutes them, and rewrites BOTH the ingredient list AND the cooking instructions in 4 sections: What I Changed, AGS-Safe Ingredients, AGS-Safe Instructions, Tips & Notes. Includes a "Clear & Start Over" button. |
+| ✨ **Find an AGS-Safe Recipe** | (Inside the Adapt tab) User names a dish OR lists ingredients on hand. AI generates 3 distinct recipe variations, each with its own "Copy this recipe" button. "Search Again" button rotates through 8 style variations (quick meals, comfort food, international, etc.) so repeated searches give genuinely different results. |
+| 🔄 **Substitutions** | Enter an ingredient + dish type, get 2-4 AGS-safe alternatives with ratios and tips. |
+| 💬 **Ask Anything** | 5 sub-topic tabs: Food Safety, Hidden Ingredients, Medications & Products, Dining Out, Other — each with example quick-question chips. |
+| 📋 **Safe Reference** | Comprehensive reference covering meats/proteins (including emu & ostrich), fats/broths, thickeners, dairy, hidden additives, non-food products/medications, and a substitution guide with links to trusted external AGS resources (alphagalinformation.org, alphagaldocs.org, CDC, MU Extension). |
 
 ---
 
@@ -37,20 +37,13 @@ Hi! I'm **Rachel Baldwin**, author of 50+ titles on Amazon and Ingram Spark, spe
 
 I live in rural Missouri and cook clean, organic, garden-to-table meals — all strictly AGS-safe. This tool grew directly out of my cookbook research and my own experience living with food restrictions.
 
-👉 **Browse all my cookbooks and designs at [RLBDesigns.com](https://rlbdesigns.com)**
+👉 **Browse all my cookbooks and designs at [RLBDesigns.com](https://www.rlbdesigns.com)**
 
 ---
 
-## How to Use the Tool
+## How the AI Works (For Readers)
 
-This tool requires a **free Anthropic API key** to power the AI features.
-
-1. Visit [console.anthropic.com](https://console.anthropic.com/) and create a free account
-2. Generate an API key
-3. Paste your key into the field at the top of the tool and click **Save key**
-4. Your key is stored only in your own browser — it is never sent anywhere except Anthropic's servers
-
-> **Privacy note:** Your API key is saved in your browser's local storage only. No data is stored on any server associated with this project.
+No setup required! The AI features (Adapt, Substitutions, Ask Anything, Recipe Finder) work automatically through a free Cloudflare Worker that securely calls the Groq API on the back end. Readers never need their own API key.
 
 ---
 
@@ -65,17 +58,9 @@ People with AGS must avoid:
 - Gelatin and rennet
 - Many hidden mammal-derived additives in packaged foods
 
+Some individuals are also sensitive to shellfish, poultry, and/or eggs.
+
 **Always verify with your allergist.** Individual sensitivities vary widely.
-
----
-
-## Get It on Your Own Site
-
-This tool is a single `index.html` file — no server, no database, no dependencies to install. You can:
-
-- Host it free on **GitHub Pages** (what this repo does)
-- Upload it to any web host as a standalone page
-- Share the URL directly with your cookbook buyers
 
 ---
 
@@ -85,4 +70,4 @@ This tool provides general AGS safety guidance for informational purposes. It is
 
 ---
 
-*Built with care for the AGS community by Rachel Baldwin / RLB Designs · Powered by [Anthropic Claude AI](https://anthropic.com)*
+*Built with care for the AGS community by Rachel Baldwin / RLB Designs · AI powered by Groq (llama-3.3-70b-versatile)*
